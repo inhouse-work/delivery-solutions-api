@@ -1,0 +1,143 @@
+{
+  "_id": "62a9e3ce87f3c9df15080f00",
+  "estimatedDeliveryTime": null,
+  "estimatedDeliveryTimeByZone": null,
+  "estimatedPickupTime": null,
+  "estimatedPickupTimeByZone": null,
+  "expiresTime": null,
+  "expiresTimeByZone": null,
+  "trackingUrl": null,
+  "provider": "",
+  "amount": null,
+  "courier": null,
+  "dspAttributes": null,
+  "userEmail": "shivang.naik@deliverysolutions.co",
+  "storeExternalId": "100983",
+  "orderExternalId": "15June11",
+  "groupId": null,
+  "type": "delivery",
+  "orderValue": 78.65,
+  "tips": 8,
+  "temperatureControl": "none",
+  "deliveryContact": {
+    "name": "Charlize Brian",
+    "phone": "+1 201-555-5555",
+    "customerId": "",
+    "email": "",
+    "notifySms": false,
+    "notifyEmail": false
+  },
+  "deliveryAddress": {
+    "street": "5411 Mercedes Avenue",
+    "street2": "",
+    "city": "Dallas",
+    "state": "TX",
+    "country": "US",
+    "zipcode": "75206",
+    "latitude": 32.8284237,
+    "longitude": -96.7768713,
+    "apartmentNumber": "",
+    "reportLatitude": 32.8284237,
+    "reportLongitude": -96.7768713
+  },
+  "proposedProviders": [
+    {
+      "name": "DoorDash",
+      "services": [
+        {
+          "id": "delivery"
+        }
+      ]
+    }
+  ],
+  "selectedDate": "",
+  "selectedWindow": "",
+  "windowCategory": "",
+  "signature": "not_required",
+  "packages": [
+    {
+      "name": "small",
+      "items": 1,
+      "size": {
+        "length": 6,
+        "width": 6,
+        "height": 6
+      },
+      "weight": 10,
+      "description": "",
+      "temperatureControl": "none",
+      "barcode": "1YT4V90308440011"
+    }
+  ],
+  "itemList": [],
+  "notifications": {
+    "url": "",
+    "email": [],
+    "sms": []
+  },
+  "deliveryInstructions": "The dog may be playing in the yard. Please close the gate once you enter.",
+  "pickupInstructions": "Enter from the staff entrance to pick up the package",
+  "pickupTime": {
+    "startsAt": 1655301130075
+  },
+  "deliveryPickupTime": {
+    "jsdate": "2022-06-15T13:52:10.075Z"
+  },
+  "dropoffTime": {
+    "endsAt": 1655301190075
+  },
+  "deliveryDropOffTime": {
+    "jsdate": "2022-06-15T13:53:10.075Z"
+  },
+  "checkboxSelectedDateTimeControls": "",
+  "bypassThresholdAmount": false,
+  "dispatch": {
+    "type": "manual",
+    "time": null,
+    "basedOn": null
+  },
+  "orderAttributes": {},
+  "pickup": null,
+  "clonedFrom": "62a9df3aa69cdb7a3ad5253e",
+  "pickupTimeStart": null,
+  "pickupTimeEnd": null,
+  "dropoffTimeStart": null,
+  "dropoffTimeEnd": null,
+  "isEstimate": false,
+  "isTipsPosted": false,
+  "isPickup": false,
+  "brandExternalId": "devon",
+  "currencyCode": "USD",
+  "isLegacy": false,
+  "isPickupASAP": true,
+  "isDropoffASAP": true,
+  "userPickupTime": 1655301130075,
+  "dropOffTime": 1655301190075,
+  "timeZone": "America/Chicago",
+  "pickUpContact": {
+    "name": "Michele Parker",
+    "phone": "+1 201-555-0123"
+  },
+  "pickUpAddress": {
+    "street": " The Mall",
+    "street2": "",
+    "secondary": "",
+    "city": "Dallas",
+    "zipcode": "75219",
+    "country": "US",
+    "state": "TX",
+    "latitude": 32.814645,
+    "longitude": -96.81982339999999
+  },
+  "pickUpTime": 1655301130075,
+  "createdAt": "2022-06-15T13:51:10.096Z",
+  "status": "ORDER_CANCELLED",
+  "tenantId": "dummyaccount1",
+  "active": true,
+  "requestReceiveTime": 1655301070096,
+  "requestReceiveTimeByZone": "June 15th 2022, 8:51 am CDT",
+  "lastUpdatedAt": "2022-06-15T13:52:03.524Z",
+  "barcodeLink": "https://cdn.domain.com/dummyaccount1/barcodes/2022-6/165530107010862a9e3ce87f3c9df15080f00.png",
+  "labelLink": "https://sandbox.api.deliverysolutions.co/api/v2/label?orderId=<ORDER_ID>&token=NjJhOWUzY2U4N2YzYzlkZjE1MDgwZjAw",
+  "qrcodeLink": null
+}

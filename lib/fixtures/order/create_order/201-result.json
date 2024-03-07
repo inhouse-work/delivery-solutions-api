@@ -1,0 +1,156 @@
+{
+  "storeExternalId": "7709",
+  "orderExternalId": "7709-001",
+  "type": "delivery",
+  "orderValue": 10,
+  "tip": 2,
+  "deliveryContact": {
+    "name": "asd",
+    "phone": "+1 234-567-8900",
+    "customerId": "",
+    "email": "",
+    "notifySms": true,
+    "notifyEmail": true
+  },
+  "deliveryAddress": {
+    "street": "725 Albany Street",
+    "street2": "",
+    "apartmentNumber": "",
+    "city": "Boston",
+    "state": "MA",
+    "zipcode": "02118",
+    "country": "US",
+    "latitude": 42.3346944,
+    "longitude": -71.071818
+  },
+  "packages": [
+    {
+      "name": "Solid",
+      "items": 1,
+      "size": {
+        "length": 10,
+        "width": 10,
+        "height": 10
+      },
+      "weight": 10,
+      "description": "bungii pack 1",
+      "temperatureControl": "none",
+      "barcode": "1YT4V90308440011"
+    }
+  ],
+  "itemList": [
+    {
+      "sku": "sku 1",
+      "quantity": 1,
+      "size": {
+        "length": 3,
+        "width": 2,
+        "height": 2
+      },
+      "weight": 3,
+      "price": 3,
+      "sale_price": 3,
+      "image": "https://qa.files.deliverysolutions.co/zebra/items/%5Bdeliverysolutions123456%5D/zebra/sku_1_1639056868709.png",
+      "title": "Watch"
+    }
+  ],
+  "pickupTime": {
+    "startsAt": 1679592688115
+  },
+  "dropoffTime": {
+    "endsAt": 1679592748115
+  },
+  "dispatch": {
+    "type": "immediate",
+    "time": null,
+    "basedOn": null
+  },
+  "orderAttributes": {},
+  "tenantId": "dummyaccount1",
+  "isPickup": false,
+  "brandExternalId": "dummyaccount1",
+  "groupId": null,
+  "currencyCode": "USD",
+  "dropOffTime": 1679592748115,
+  "timeZone": "America/New_York",
+  "pickUpContact": {
+    "name": "asd",
+    "phone": "+1 234-567-8900"
+  },
+  "pickUpAddress": {
+    "street": "345 Harrison Avenue",
+    "street2": "",
+    "secondary": "",
+    "city": "Boston",
+    "zipcode": "02118",
+    "country": "US",
+    "state": "MA",
+    "latitude": 42.3452369,
+    "longitude": -71.0639399
+  },
+  "pickUpTime": 1679592688115,
+  "status": "REQUEST_RECEIVED",
+  "estimatedPickupTime": null,
+  "estimatedPickupTimeStarts": null,
+  "estimatedPickupTimeEnds": null,
+  "estimatedDeliveryTime": null,
+  "estimatedDeliveryTimeStarts": null,
+  "estimatedDeliveryTimeEnds": null,
+  "labelLink": "",
+  "receivedAt": "March 23rd 2023, 1:30:28 pm",
+  "receivedAtEpoch": 1679592628322,
+  "provider": "",
+  "orderId": "641c8cb4f713966e071f52d3",
+  "trackingNumber": "",
+  "attachments": null,
+  "errors": [],
+  "driver": null,
+  "vehicle": null,
+  "amount": null,
+  "labels": null,
+  "trackingUrl": null,
+  "alternateLocation": null,
+  "serviceType": null,
+  "isTipsPosted": false,
+  "tips": null,
+  "actualDeliveryTime": null,
+  "actualPickupTime": null,
+  "fee": null,
+  "returnRequest": null,
+  "providerReturnResponse": null,
+  "proposedProviders": [],
+  "feedback": null,
+  "clonedFrom": null,
+  "serviceId": null,
+  "providerBatch": null,
+  "barcodes": null,
+  "carrier": null,
+  "batchId": "",
+  "batchSequence": "",
+  "shipments": [],
+  "createdAt": "",
+  "lastUpdatedAt": "",
+  "eventReason": null,
+  "geofences": [],
+  "exceptionDetails": null,
+  "undeliverableOrderReturnLocation": {
+    "address": {
+      "street": "502 Park Avenue",
+      "street2": "",
+      "secondary": "",
+      "city": "New York",
+      "zipcode": "10022",
+      "country": "US",
+      "state": "NY",
+      "latitude": 40.76321409999999,
+      "longitude": -73.9698963
+    },
+    "contact": {
+      "name": "John Smith",
+      "phone": "+1 201-555-0123"
+    },
+    "name": "WareHouse 301",
+    "pickupInstructions": "Valid driver’s license or government issued photo ID is required"
+  },
+  "returnStoreId": "301"
+}

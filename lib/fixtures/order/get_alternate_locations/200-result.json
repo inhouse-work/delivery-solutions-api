@@ -1,0 +1,31 @@
+[
+  {
+    "provider": "UPS",
+    "address": {
+      "street": "60 CLINTON PLZ",
+      "street2": "",
+      "city": "CLINTON",
+      "state": "IL",
+      "country": "US",
+      "zipcode": "61727",
+      "latitude": 40.14812088,
+      "longitude": -88.976921
+    },
+    "providerLocationId": "179140",
+    "distance": 11.1,
+    "locationTimings": [
+      "Mon-Sat: 9:00am-8:00pm",
+      "Sun: 10:00am-5:00pm"
+    ],
+    "serviceType": "UPS Access Point",
+    "type": "drop-off-point",
+    "providerLocationInfo": [
+      "CHEMIST'S"
+    ],
+    "name": "CVS STORE # 6931",
+    "phone": "",
+    "providerTags": [
+      "providerTag-1"
+    ]
+  }
+]

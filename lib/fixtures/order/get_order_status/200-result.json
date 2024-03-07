@@ -1,0 +1,50 @@
+[
+  {
+    "_id": "6268f4a97b1d20dfadda6252",
+    "orderId": "6268f4a9d9f309c2a43e3a6a",
+    "tenantId": "dummyaccount1",
+    "orderStatus": [
+      {
+        "status": "REQUEST_RECEIVED",
+        "updatedAt": "April 27th 2022, 2:45:45 am CDT",
+        "updatedAtEpoch": 1651045545760,
+        "note": null,
+        "statusUser": "Default_Business_Key",
+        "retry": {}
+      },
+      {
+        "status": "ESTIMATES_RECEIVED",
+        "updatedAt": "April 27th 2022, 2:45:46 am CDT",
+        "updatedAtEpoch": 1651045546388,
+        "note": null,
+        "statusUser": "Default_Business_Key",
+        "retry": {}
+      },
+      {
+        "status": "ORDER_DISPATCHED",
+        "updatedAt": "April 27th 2022, 2:45:47 am CDT",
+        "updatedAtEpoch": 1651045547131,
+        "note": null,
+        "statusUser": "Default_Business_Key",
+        "retry": {},
+        "workflow": "carrier"
+      },
+      {
+        "status": "ORDER_UNDELIVERABLE",
+        "updatedAt": "October 26th 2022, 3:46:07 pm CDT",
+        "updatedAtEpoch": 1666817167059,
+        "note": "ARRIVED_AT_RETURN( RT-001 - Customer rejected (missing item or quality issue) )",
+        "statusUser": "Walmart GoLocal",
+        "retry": {},
+        "workflow": "carrier",
+        "eventReason": {
+          "code": "CUSTOMER_REJECTED",
+          "title": "Customer Rejected",
+          "note": "RT-001 - Customer rejected (missing item or quality issue)"
+        },
+        "subStatus": "RETURN_AT_LOCATION"
+      }
+    ],
+    "trackingUrl": "https://www.ups.com/track?loc=en_IN&tracknum=1Z7A38W90308260011"
+  }
+]

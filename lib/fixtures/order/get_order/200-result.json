@@ -1,0 +1,212 @@
+{
+  "provider": "UPS",
+  "trackingNumber": "1Z7A38W90308260011",
+  "trackingUrl": "https://www.ups.com/track?loc=en_IN&tracknum=1Z7A38W90308260011",
+  "amount": 1929,
+  "tips": 20,
+  "barcodes": [
+    "12312351",
+    "77091078"
+  ],
+  "estimatedPickupTime": null,
+  "estimatedPickupTimeStarts": null,
+  "estimatedPickupTimeEnds": null,
+  "estimatedDeliveryTime": 1651118400000,
+  "estimatedDeliveryTimeStarts": null,
+  "estimatedDeliveryTimeEnds": 1651118400000,
+  "currency": "USD",
+  "currencyCode": "USD",
+  "labels": [
+    {
+      "trackingNumber": "1Z7A38W90308260011",
+      "url": "https://www.ups.com/track?loc=en_IN&tracknum=1Z7A38W90308260011",
+      "code": "1Z7A38W90308260011",
+      "file": "https://sandbox.files.deliverysolutions.co/dummyaccount1/delivery-labels/UPS/2022-4/1Z7A38W90308260011%20-%200cdcf77e-c5fe-11ec-9234-2190381ac3c3.gif",
+      "fileType": "gif",
+      "qrCodeImage": null
+    }
+  ],
+  "shipments": [
+    {
+      "trackingNumber": "1Z7A38W90308260011",
+      "providerTrackingUrl": "https://www.ups.com/track?loc=en_IN&tracknum=1Z7A38W90308260011",
+      "label": {
+        "trackingNumber": "1Z7A38W90308260011",
+        "url": "https://www.ups.com/track?loc=en_IN&tracknum=1Z7A38W90308260011",
+        "code": "1Z7A38W90308260011",
+        "file": "https://sandbox.files.deliverysolutions.co/dummyaccount1/delivery-labels/UPS/2022-4/1Z7A38W90308260011%20-%200cdcf77e-c5fe-11ec-9234-2190381ac3c3.gif",
+        "fileType": "gif",
+        "qrCodeImage": null
+      },
+      "return": {
+        "trackingNumber": "1Z7A38W90308260011",
+        "url": "https://www.ups.com/track?loc=en_IN&tracknum=1Z7A38W90308260011",
+        "code": "1Z7A38W90308260011",
+        "file": "https://sandbox.files.deliverysolutions.co/dummyaccount1/delivery-labels/UPS/2022-4/1Z7A38W90308260011%20-%200cdcf77e-c5fe-11ec-9234-2190381ac3c3.gif",
+        "fileType": "gif",
+        "qrCodeImage": null
+      },
+      "package": {
+        "name": "custom",
+        "size": {
+          "height": 2,
+          "width": 2,
+          "length": 2
+        },
+        "weight": 2,
+        "items": 2,
+        "barcode": "1YT4V90308440011",
+        "description": "Package Description"
+      },
+      "estimatedPickupTime": null,
+      "estimatedPickupTimeByZone": "",
+      "estimatedPickupTimeStarts": null,
+      "estimatedPickupTimeStartsByZone": "",
+      "estimatedPickupTimeEnds": null,
+      "estimatedPickupTimeEndsByZone": "",
+      "estimatedDeliveryTime": 1651118400000,
+      "estimatedDeliveryTimeByZone": "April 27th 2022, 11:00 pm CDT",
+      "estimatedDeliveryTimeStarts": null,
+      "estimatedDeliveryTimeStartsByZone": "",
+      "estimatedDeliveryTimeEnds": 1651118400000,
+      "estimatedDeliveryTimeEndsByZone": "April 27th 2022, 11:00 pm CDT",
+      "chargeDetails": {
+        "baseServiceCharges": 1013,
+        "serviceOptionsCharges": 299,
+        "otherItemizedCharges": 617
+      },
+      "amount": 1929,
+      "liveTrackingUrl": "https://s.dl-s.co/wVfr9fJPzQD",
+      "hostedTrackingUrl": "https://s.dl-s.co/jL1hc80UBTq",
+      "trackingUrl": "https://www.ups.com/track?loc=en_IN&tracknum=1Z7A38W90308260011",
+      "status": "ORDER_CANCELLED"
+    }
+  ],
+  "status": "ORDER_CANCELLED",
+  "labelLink": "https://sandbox.api.deliverysolutions.co/api/v2/label?orderId=6268f4a9d9f309c2a43e3a6a&token=NjI2OGY0YTlkOWYzMDljMmE0M2UzYTZh",
+  "barcode": "https://sandbox.files.deliverysolutions.co/dummyaccount1/barcodes/2022-4/16510455456986268f4a9d9f309c2a43e3a6a.png",
+  "orderId": "6268f4a9d9f309c2a43e3a6a",
+  "hostedTrackingUrl": "https://s.dl-s.co/3gCOf_a0h-6",
+  "customerWebflowUrl": null,
+  "deliveryInstructions": "The dog may be playing in the yard. Please close the gate once you enter.",
+  "statusUser": "Default_Business_Key",
+  "alternateLocation": {
+    "address": {
+      "street": "60 CLINTON PLZ",
+      "street2": "",
+      "city": "Clinton",
+      "state": "IL",
+      "country": "US",
+      "zipcode": "61727",
+      "latitude": 40.14812088,
+      "longitude": -88.976921
+    },
+    "distance": {
+      "value": "0.2",
+      "unit": "MI"
+    },
+    "provider": "UPS",
+    "dspLocationId": "171608",
+    "locationTimings": [
+      "Mon-Sun: 8:00am-11:45pm"
+    ],
+    "type": "Access Point",
+    "locationTags": [
+      "CHEMISTS"
+    ],
+    "name": "CVS STORE 3878",
+    "phone": "+1 201-555-1896"
+  },
+  "timeZone": "America/Chicago",
+  "receivedAt": "April 27th 2022, 2:45:47 am",
+  "preferredService": "",
+  "orderExternalId": "1908241-006",
+  "storeExternalId": "7709",
+  "tenantId": "dummyaccount1",
+  "note": "",
+  "event": "",
+  "driverExternalId": "",
+  "driverId": "",
+  "orderAttributes": {
+    "test": 10
+  },
+  "signatureImageUrl": null,
+  "attachments": null,
+  "errors": [],
+  "driver": null,
+  "vehicle": null,
+  "lastLocation": null,
+  "courier": null,
+  "pickupInstructions": "Enter from the staff entrance to pick up the package",
+  "deliveryContact": {
+    "name": "John Smith",
+    "phone": "232-323-2323",
+    "customerId": "Cust101",
+    "email": "john.smith@email.com",
+    "notifySms": true,
+    "notifyEmail": false
+  },
+  "pickUpAddress": {
+    "street": "508 South Vine Street",
+    "street2": "",
+    "secondary": "",
+    "city": "Atlanta",
+    "zipcode": "61723",
+    "country": "US",
+    "state": "IL",
+    "latitude": 40.2587474,
+    "longitude": -89.2294067
+  },
+  "deliveryAddress": {
+    "street": "508 S Vine St",
+    "street2": "",
+    "city": "Atlanta",
+    "state": "IL",
+    "zipcode": "61723",
+    "country": "US",
+    "latitude": 40.2587474,
+    "longitude": -89.2294067
+  },
+  "type": "shipping",
+  "serviceType": "Ground",
+  "actualDeliveryTime": null,
+  "actualPickupTime": null,
+  "fee": null,
+  "providerReturnResponse": null,
+  "proposedProviders": [
+    {
+      "name": "UPS",
+      "services": [
+        {
+          "id": "ground"
+        }
+      ]
+    }
+  ],
+  "feedback": null,
+  "groupId": "1908241",
+  "serviceId": "ground",
+  "pickupTime": {
+    "startsAt": 1650997800000,
+    "endsAt": 1651170600000
+  },
+  "dropoffTime": {
+    "startsAt": 1651257000000,
+    "endsAt": 1651343400000
+  },
+  "batchId": "60d028745eab371a4d2c5df0",
+  "batchSequence": 1,
+  "batchTags": [
+    "morning batch",
+    "in house"
+  ],
+  "clonedFrom": "5e1f1ef5167ab20010a74b45",
+  "eventReason": {
+    "code": "ORDER_ISSUE",
+    "title": "Issue with the Order (Order unavailable, Duplicate order, etc)",
+    "note": "115 - Order Update",
+    "status": "ORDER_CANCELLED",
+    "subStatus": null,
+    "updatedAtEpoch": 1669769831000
+  }
+}

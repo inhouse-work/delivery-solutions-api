@@ -1,0 +1,45 @@
+[
+  {
+    "_id": "597398c63e526c00012078f4",
+    "tenantId": "NYC",
+    "name": "NYCStore",
+    "storeExternalId": "NYCStore101",
+    "description": "Famous Store in Times Sqaure and Central Park 101 Area",
+    "timeZone": "America/Chicago",
+    "contact": {
+      "name": "Peter Brown",
+      "phone": "214-234-2232"
+    },
+    "pickupInstructions": "Always be smiling",
+    "address": {
+      "street": "7th 42nd Avenue, Times Square",
+      "street2": "",
+      "city": "Manhattan",
+      "state": "NY",
+      "zipcode": "10036",
+      "country": "US",
+      "latitude": 29.9758379,
+      "longitude": -95.4718175
+    },
+    "brandExternalId": "NYCBrand101",
+    "DSPs": [
+      {
+        "name": "FedEx"
+      },
+      {
+        "name": "Postmates"
+      },
+      {
+        "name": "Shipt"
+      }
+    ],
+    "dspAttributes": {
+      "Shipt": {
+        "deliverableZipcodes": "22911, 22913, 22904"
+      }
+    },
+    "createdAt": "2020-01-14T07:25:04.743Z",
+    "lastUpdatedAt": "2020-01-14T07:25:04.743Z",
+    "active": true
+  }
+]

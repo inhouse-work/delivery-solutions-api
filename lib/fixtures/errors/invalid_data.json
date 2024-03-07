@@ -1,0 +1,10 @@
+{
+  "errors": [
+    {
+      "type": "INVALID_DATA",
+      "message": "No such storeExternalId exists in our system. Please provide a valid storeExternalId."
+    }
+  ],
+  "type": "INVALID_DATA",
+  "message": "No such storeExternalId exists in our system. Please provide a valid storeExternalId."
+}

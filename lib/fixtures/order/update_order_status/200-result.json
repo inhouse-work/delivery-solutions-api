@@ -1,0 +1,202 @@
+{
+  "_id": "6422e72aaf4b02c5c9e2f9bb",
+  "estimatedDeliveryTime": null,
+  "estimatedDeliveryTimeByZone": "January 1st 1970, 5:30 am IST",
+  "estimatedPickupTime": 1680071899000,
+  "estimatedPickupTimeByZone": "March 28th 2023, 6:41 pm IST",
+  "expiresTime": null,
+  "expiresTimeByZone": null,
+  "trackingUrl": null,
+  "provider": "Self Delivery",
+  "amount": 800,
+  "courier": null,
+  "dspAttributes": null,
+  "userEmail": "aman.gupta@deliverysolutions.co",
+  "storeExternalId": "proximity test",
+  "orderExternalId": "28Mar006",
+  "groupId": null,
+  "type": "curbside",
+  "orderValue": 120,
+  "tips": null,
+  "temperatureControl": "none",
+  "deliveryContact": {
+    "name": "Aman",
+    "phone": "+1 972-843-7092",
+    "customerId": "",
+    "email": "",
+    "notifySms": false,
+    "notifyEmail": false
+  },
+  "selectedDate": "",
+  "selectedWindow": "",
+  "windowCategory": "",
+  "signature": null,
+  "packages": [
+    {
+      "name": "custom",
+      "size": {
+        "length": 1,
+        "width": 1,
+        "height": 1
+      },
+      "weight": 1,
+      "items": 1,
+      "content": null,
+      "temperatureControl": "none",
+      "description": "",
+      "barcode": "1YT4V90308440011"
+    }
+  ],
+  "itemList": [],
+  "notifications": {
+    "url": "",
+    "email": [],
+    "sms": []
+  },
+  "deliveryInstructions": null,
+  "pickupInstructions": null,
+  "pickupTime": {
+    "startsAt": 1680009062911
+  },
+  "deliveryPickupTime": {
+    "jsdate": "2023-03-28T13:11:02.911Z"
+  },
+  "dropoffTime": {
+    "startsAt": null,
+    "endsAt": null
+  },
+  "deliveryDropOffTime": {
+    "jsdate": "1970-01-01T00:00:00.000Z"
+  },
+  "checkboxSelectedDateTimeControls": "",
+  "bypassThresholdAmount": false,
+  "dispatch": {
+    "type": "immediate",
+    "time": null,
+    "basedOn": null
+  },
+  "orderAttributes": {},
+  "pickup": null,
+  "clonedFrom": "6422a378cbefa4af70a14066",
+  "isTracker": false,
+  "isEstimate": false,
+  "isTipsPosted": false,
+  "tenantId": "chatrevamp",
+  "isPickup": true,
+  "brandExternalId": "chatrevamp",
+  "stagingAreas": null,
+  "currencyCode": null,
+  "isLegacy": false,
+  "isPickupASAP": true,
+  "userPickupTime": 1680009062911,
+  "dropOffTime": 0,
+  "hasRefrigeratedItems": false,
+  "deliveryAddress": null,
+  "timeZone": "Asia/Kolkata",
+  "pickUpContact": {
+    "name": "Aman",
+    "phone": "+1 201-555-0123"
+  },
+  "pickUpAddress": {
+    "street": " Nepeansea Road",
+    "street2": "",
+    "secondary": "",
+    "city": "Mumbai",
+    "zipcode": "400006",
+    "country": "IN",
+    "state": "MH",
+    "latitude": 18.9618298,
+    "longitude": 72.8016608
+  },
+  "pickUpTime": 1680009062911,
+  "createdAt": "2023-03-28T13:10:02.940Z",
+  "active": true,
+  "requestReceiveTime": 1680009002974,
+  "requestReceiveTimeByZone": "March 28th 2023, 6:40 pm IST",
+  "status": "ORDER_DELIVERED",
+  "lastUpdatedAt": "2023-04-03T13:02:59.157Z",
+  "barcodeLink": "https://sandbox.files.deliverysolutions.co/chatrevamp/barcodes/2023-3/16800090029876422e72aaf4b02c5c9e2f9bb.png",
+  "labelLink": "https://sandbox.api.deliverysolutions.co/api/v2/label?orderId=6422e72aaf4b02c5c9e2f9bb&token=NjQyMmU3MmFhZjRiMDJjNWM5ZTJmOWJi",
+  "qrcodeLink": "https://sandbox.files.deliverysolutions.co/chatrevamp/qrcodes/2023-3/16800090030026422e72aaf4b02c5c9e2f9bb.png",
+  "customerWebflowUrl": "https://s.dl-s.co/jFSu2hNgVsB",
+  "hostedFeedbackUrl": "https://s.dl-s.co/BlhF9-1rrzR",
+  "hostedTrackingUrl": "https://s.dl-s.co/b5sBaf2y-ng",
+  "liveTrackingUrl": "https://s.dl-s.co/uim6tVlQO5h",
+  "returnsUrl": "https://s.dl-s.co/Vn4IiOFxksb",
+  "latestErrors": [],
+  "isPredictedEtaEtd": null,
+  "release": {
+    "type": "immediate",
+    "time": null,
+    "basedOn": "pickupTimeStartsAt",
+    "absoluteTime": null
+  },
+  "deliveryDistance": 0,
+  "alternateLocation": null,
+  "barCodeType": "code128",
+  "carrier": {
+    "providerInfo": {
+      "id": "60acc5af2d61415bf21b6aab",
+      "name": "Self Delivery",
+      "displayName": "Self Delivery"
+    }
+  },
+  "currency": null,
+  "estimatedDeliveryTimeEnds": null,
+  "estimatedDeliveryTimeEndsByZone": null,
+  "estimatedDeliveryTimeStarts": null,
+  "estimatedDeliveryTimeStartsByZone": null,
+  "estimatedId": null,
+  "estimatedPickupTimeEnds": null,
+  "estimatedPickupTimeEndsByZone": null,
+  "estimatedPickupTimeStarts": null,
+  "estimatedPickupTimeStartsByZone": null,
+  "fee": null,
+  "labels": null,
+  "parentOrderId": null,
+  "providerBatch": null,
+  "providerResponse": {
+    "data": {
+      "provider": "Self Delivery",
+      "trackingNumber": "28Mar006",
+      "status": "ORDER_DISPATCHED",
+      "estimatedPickupTime": "2023-03-28T13:11:02.911Z",
+      "estimatedPickupTimeByZone": "March 28th 2023, 6:41 pm IST",
+      "estimatedDeliveryTime": "1970-01-01T00:00:00.000Z",
+      "estimatedDeliveryTimeByZone": "January 1st 1970, 5:30 am IST",
+      "courier": null,
+      "amount": 800,
+      "currency": null,
+      "labels": null,
+      "barCodeType": "code128"
+    },
+    "fullResponse": {}
+  },
+  "providerTrackingUrl": null,
+  "serviceType": "Curbside",
+  "trackingNumber": "28Mar006",
+  "attachments": [],
+  "lastLocation": {
+    "updatedAt": "2023-03-29T06:37:12.852Z",
+    "longitude": 72.80181,
+    "latitude": 18.96077,
+    "isManual": false
+  },
+  "note": "Test Bad Data",
+  "statusUpdatedAt": "April 3rd 2023, 8:02:53 am",
+  "statusUser": "Default_Business_Key",
+  "geofences": [
+    {
+      "name": "proximity test-AtLocation",
+      "type": "at-location",
+      "lastUpdatedAt": "2023-03-29T05:52:56.812Z"
+    },
+    {
+      "name": "proximity test-Nearby",
+      "type": "nearby",
+      "lastUpdatedAt": "2023-03-29T05:52:56.812Z"
+    }
+  ],
+  "actualDeliveryTime": 1680526973784,
+  "actualPickupTime": null
+}

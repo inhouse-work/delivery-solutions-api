@@ -1,0 +1,32 @@
+{
+  "_id": "62676102f6c5bd24d33a4928",
+  "tenantId": "dummyaccount1",
+  "active": true,
+  "name": "Excellent Pickup Location",
+  "storeExternalId": "152946",
+  "brandExternalId": "devon",
+  "contact": {
+    "name": "Location Manager",
+    "phone": "+1-214-234-2232"
+  },
+  "address": {
+    "street": "6615 Meadowbrook Dr",
+    "city": "Fort Worth",
+    "state": "TX",
+    "zipcode": "76112",
+    "country": "US",
+    "latitude": 32.7471299,
+    "longitude": -97.2155298
+  },
+  "description": "",
+  "pickupInstructions": "",
+  "currencyCode": "USD",
+  "timeZone": "America/Chicago",
+  "createdAt": "2022-04-26T03:03:30.559Z",
+  "lastUpdatedAt": "2022-04-26T03:03:30.559Z",
+  "isDeleted": false,
+  "isTemporary": false,
+  "atRisk": {
+    "isCorporateAtRisk": true
+  }
+}
