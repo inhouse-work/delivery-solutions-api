@@ -21,11 +21,11 @@ module DeliverySolutions
   GEM_ROOT = Pathname.new(__dir__).join("../").freeze
   public_constant :GEM_ROOT
 
-  def new(test: false, raise_api_errors: true)
+  def new(test: false, raise_api_errors: true, **)
     if test
       MockClient.new(raise_api_errors:)
     else
-      Client.new
+      Client.new(**)
     end
   end
 
