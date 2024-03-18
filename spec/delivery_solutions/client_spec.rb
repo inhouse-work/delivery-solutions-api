@@ -21,5 +21,12 @@ RSpec.describe DeliverySolutions::Client do
     it "does not raise an error if the API key is provided" do
       expect { described_class.new(**params) }.not_to raise_error
     end
+
+    it "reads default values from the environment" do
+      ENV["DELIVERY_SOLUTIONS_API_KEY"] = "123"
+      ENV["DELIVERY_SOLUTIONS_TENANT_ID"] = "456"
+
+      expect { described_class.new }.not_to raise_error
+    end
   end
 end
