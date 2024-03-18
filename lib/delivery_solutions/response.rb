@@ -6,6 +6,7 @@ module DeliverySolutions
 
     def self.parse(payload)
       payload = case payload
+                when String then JSON.parse(payload)
                 when Hash then payload
                 when Array then { collection: payload }
       end

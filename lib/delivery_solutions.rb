@@ -13,18 +13,13 @@ require_relative "delivery_solutions/version"
 require_relative "delivery_solutions/json"
 require_relative "delivery_solutions/mock_client"
 require_relative "delivery_solutions/merge_fixture"
+require_relative "delivery_solutions/client"
 
 module DeliverySolutions
   module_function
 
   GEM_ROOT = Pathname.new(__dir__).join("../").freeze
   public_constant :GEM_ROOT
-
-  # rubocop:disable Lint/EmptyClass
-  class Client
-    # TODO: Yet to build out
-  end
-  # rubocop:enable Lint/EmptyClass
 
   def new(test: false, raise_api_errors: true)
     if test
