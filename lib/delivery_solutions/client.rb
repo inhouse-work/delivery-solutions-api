@@ -1,12 +1,19 @@
 module DeliverySolutions
   class Client
-    BASE_URL = "https://production.api.deliverysolutions.co".freeze
+    PRODUCTION_URL = "https://production.api.deliverysolutions.co".freeze
+    SANDBOX_URL = "https://sandbox.api.deliverysolutions.co".freeze
+
+    MissingApiKey = Class.new(ArgumentError)
+    MissingTenantId = Class.new(ArgumentError)
 
     def initialize(
       api_key: ENV.fetch("DELIVERY_SOLUTIONS_API_KEY", nil),
       tenant_id: ENV.fetch("DELIVERY_SOLUTIONS_TENANT_ID", nil),
-      base_url: BASE_URL
+      base_url: PRODUCTION_URL
     )
+      raise MissingApiKey, "Missing API key" if api_key.nil?
+      raise MissingTenantId, "Missing tenant ID" if tenant_id.nil?
+
       @api_key = api_key
       @tenant_id = tenant_id
       @base_url = base_url

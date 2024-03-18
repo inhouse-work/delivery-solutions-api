@@ -28,8 +28,4 @@ module DeliverySolutions
       Client.new(**)
     end
   end
-
-  def create_order(...)
-    raise Error
-  end
 end
