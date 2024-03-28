@@ -1,0 +1,12 @@
+{
+  "type": "ORDER_CANCELLATION_FAILED",
+  "message": "DSP failed to cancel order",
+  "errors": [
+    {
+      "provider": "UPS Shipping",
+      "type": "NON_CANCELABLE_DELIVERY",
+      "message": "No shipment found within the allowed void period",
+      "code": 400
+    }
+  ]
+}
