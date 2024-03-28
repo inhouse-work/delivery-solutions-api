@@ -31,7 +31,7 @@ module DeliverySolutions
       },
       cancel_order: {
         success: "order/cancel_order/200-successfully-cancel-an-order",
-        failure: "order/cancel_order/400-failure-response"
+        failure: "order/cancel_order/400-provider-does-not-cancel-order"
       },
       get_alternate_locations: {
         success: "order/get_alternate_locations/200-result",
