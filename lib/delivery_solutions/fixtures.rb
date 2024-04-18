@@ -52,7 +52,12 @@ module DeliverySolutions
       list_locations: {
         success: "pickup_location/list_locations/200-result",
         failure: "pickup_location/list_locations/400-failure-response"
+      },
+      get_rates: {
+        success: "rates/get_rates/200-rate-call-with-bare-minimum-fields",
+        failure: "rates/get_rates/400-result"
       }
+
     }.freeze
     public_constant :PATHS
 

@@ -13,7 +13,8 @@ FIXTURES = {
   create_location: "pickup_location/create_location/" \
                    "201-response-for-required-fields-only-request",
   get_location: "pickup_location/get_location/200-result",
-  list_locations: "pickup_location/list_locations/200-result"
+  list_locations: "pickup_location/list_locations/200-result",
+  get_rates: "rates/get_rates/200-rate-call-with-bare-minimum-fields"
 }.freeze
 
 RSpec.describe DeliverySolutions::MockClient do
