@@ -46,7 +46,7 @@ module DeliverySolutions
     def post(path, params)
       uri = URI.parse(@base_url + path)
       request = Net::HTTP::Post.new(uri, headers)
-      response = http(uri).request(request, JSON.stringify(params))
+      response = http(uri).request(request, JSON.generate(params))
       Response.parse(response.read_body)
     end
 
