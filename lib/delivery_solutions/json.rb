@@ -7,5 +7,9 @@ module DeliverySolutions
     def parse(*, **)
       ::JSON.parse(*, symbolize_names: true, **)
     end
+
+    def stringify(*, **)
+      ::JSON.generate(*, **)
+    end
   end
 end
