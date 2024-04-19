@@ -42,7 +42,7 @@ module DeliverySolutions
     def post(path, params)
       uri = URI.parse(@base_url + path)
       request = Net::HTTP::Post.new(uri, headers)
-      response = http.request(request, JSON.stringify(params))
+      response = http(uri).request(request, JSON.stringify(params))
       Response.parse(response.read_body)
     end
 
@@ -56,7 +56,7 @@ module DeliverySolutions
       # rubocop:enable Style/StringHashKeys
     end
 
-    def http
+    def http(uri)
       Net::HTTP.new(uri.host, uri.port).tap do |http|
         http.use_ssl = true
       end
