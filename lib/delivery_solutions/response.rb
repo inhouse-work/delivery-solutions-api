@@ -3,6 +3,11 @@
 module DeliverySolutions
   class Response
     attr_reader :payload
+    ERROR_CODES = [
+      500,
+      400,
+      404
+    ]
 
     def self.parse(payload)
       payload = case payload
@@ -19,6 +24,8 @@ module DeliverySolutions
     end
 
     def error?
+      return true if ERROR_CODES.include?(payload.statusCode)
+
       return false if payload.errors.nil?
 
       payload.errors.any?

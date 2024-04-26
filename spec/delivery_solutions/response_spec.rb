@@ -19,6 +19,17 @@ RSpec.describe DeliverySolutions::Response do
 
       expect(described_class.new(payload).error?).to be false
     end
+
+    it "handles a 500 server error payload" do
+      payload = DeliverySolutions::Payload.new(
+        {
+          statusCode: 500,
+          message: "Internal server error"
+        }
+      )
+
+      expect(described_class.new(payload).error?).to be true
+    end
   end
 
   describe ".success?" do
