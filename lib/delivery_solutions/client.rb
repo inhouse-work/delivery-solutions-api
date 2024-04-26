@@ -43,22 +43,9 @@ module DeliverySolutions
 
     def post(path, params)
       uri = URI.parse(@base_url + path)
-
-      http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = true
-
-      request = Net::HTTP::Post.new(uri)
-      request["accept"] = 'application/json'
-      request["x-compression"] = 'true'
-      request["content-type"] = 'application/json'
-      request["x-api-key"] = '4mymdb4maObyTMvJhmwuHQ=='
-      request["tenantId"] = 'Mission_Wine__Spirits'
-      request.body = JSON.stringify(params)
-      http.request(request)
-
-      # request = Net::HTTP::Post.new(uri, headers)
-      # response = http(uri).request(request, JSON.stringify(params))
-      # Response.parse(response.read_body)
+      request = Net::HTTP::Post.new(uri, headers)
+      response = http(uri).request(request, JSON.stringify(params))
+      Response.parse(response.read_body)
     end
 
     def headers
