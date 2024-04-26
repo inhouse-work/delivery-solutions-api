@@ -3,7 +3,7 @@ RSpec.describe DeliverySolutions::Client do
     {
       api_key: "123",
       tenant_id: "456",
-      base_url: "https://example.com",
+      base_url: "https://example.com"
     }
   end
 
