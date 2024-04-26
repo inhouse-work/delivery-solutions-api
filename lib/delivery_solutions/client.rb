@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require "net/http"
+require "uri"
+
 module DeliverySolutions
   class Client
     PRODUCTION_URL = "https://production.api.deliverysolutions.co".freeze
