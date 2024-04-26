@@ -37,16 +37,16 @@ module DeliverySolutions
     private
 
     def get(path)
-      uri = URI.parse(@base_url + path)
-      uri.query = URI.encode_www_form(params)
-      request = Net::HTTP::Get.new(uri, headers)
+      uri = ::URI.parse(@base_url + path)
+      uri.query = ::URI.encode_www_form(params)
+      request = ::Net::HTTP::Get.new(uri, headers)
       response = http.request(request)
       Response.parse(response.read_body)
     end
 
     def post(path, params)
-      uri = URI.parse(@base_url + path)
-      request = Net::HTTP::Post.new(uri, headers)
+      uri = ::URI.parse(@base_url + path)
+      request = ::Net::HTTP::Post.new(uri, headers)
       response = http(uri).request(request, JSON.stringify(params))
       Response.parse(response.read_body)
     end
@@ -62,7 +62,7 @@ module DeliverySolutions
     end
 
     def http(uri)
-      Net::HTTP.new(uri.host, uri.port).tap do |http|
+      ::Net::HTTP.new(uri.host, uri.port).tap do |http|
         http.use_ssl = true
       end
     end
