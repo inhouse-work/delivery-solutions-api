@@ -17,7 +17,7 @@ FIXTURES = {
   get_rates: "rates/get_rates/200-rate-call-with-bare-minimum-fields"
 }.freeze
 
-RSpec.describe DeliverySolutionsAPI::MockClient do
+RSpec.describe DeliverySolutionsAPI::Clients::Test do
   context "creating an order" do
     let(:response_payload) do
       File.read("fixtures/order/create_order/201-result.json")
@@ -66,12 +66,12 @@ RSpec.describe DeliverySolutionsAPI::MockClient do
 
     it "rejects non-stubbable methods" do
       expect { subject.incorrect_method }
-        .to raise_error DeliverySolutionsAPI::MockClient::NoStubError
+        .to raise_error DeliverySolutionsAPI::Clients::Test::NoStubError
     end
 
     it "raises an error when a stub wasn't provided and there's no fixture" do
       expect { described_class.new.unavailable_request }
-        .to raise_error(DeliverySolutionsAPI::MockClient::NoStubError)
+        .to raise_error(DeliverySolutionsAPI::Clients::Test::NoStubError)
     end
 
     it "returns an invalid data payload when storeExternalId isn't provided" do

@@ -1,4 +1,4 @@
-RSpec.describe DeliverySolutionsAPI::Client do
+RSpec.describe DeliverySolutionsAPI::Clients::Production do
   let(:params) do
     {
       api_key: "123",
@@ -10,12 +10,12 @@ RSpec.describe DeliverySolutionsAPI::Client do
   describe "#initialize" do
     it "raises an error if the API key is not provided" do
       expect { described_class.new(**params.slice(:tenant_id, :base_url)) }
-        .to raise_error(DeliverySolutionsAPI::Client::MissingApiKey)
+        .to raise_error(DeliverySolutionsAPI::Clients::Production::MissingApiKey)
     end
 
     it "raises an error if the tenant ID is not provided" do
       expect { described_class.new(**params.slice(:api_key, :base_url)) }
-        .to raise_error(DeliverySolutionsAPI::Client::MissingTenantId)
+        .to raise_error(DeliverySolutionsAPI::Clients::Production::MissingTenantId)
     end
 
     it "does not raise an error if the API key is provided" do

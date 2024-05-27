@@ -20,9 +20,9 @@ module DeliverySolutionsAPI
 
   def new(test: false, raise_api_errors: true, **)
     if test
-      MockClient.new(raise_api_errors:)
+      Clients::Test.new(raise_api_errors:)
     else
-      Client.new(**)
+      Clients::Production.new(**)
     end
   end
 end
