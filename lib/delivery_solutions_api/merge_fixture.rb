@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module DeliverySolutions
+module DeliverySolutionsAPI
   class MergeFixture
     def self.call(...)
       new(...).call

@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-RSpec.describe DeliverySolutions do
+RSpec.describe DeliverySolutionsAPI do
   describe ".new" do
     it "returns a mock client" do
-      expect(described_class.new(test: true)).to be_a DeliverySolutions::MockClient
+      client = described_class.new(test: true)
+      expect(client).to be_a DeliverySolutionsAPI::MockClient
     end
 
     it "returns a client" do
-      expect(
-        described_class.new(api_key: 123, tenant_id: 456)
-      ).to be_a DeliverySolutions::Client
+      client = described_class.new(api_key: "123", tenant_id: "456")
+      expect(client).to be_a DeliverySolutionsAPI::Client
     end
   end
 end

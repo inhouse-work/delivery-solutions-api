@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-module DeliverySolutions
+module DeliverySolutionsAPI
   module Errors
     module_function
 
     def localized(type)
       inflector = Dry::Inflector.new
       inflector.constantize(
-        inflector.camelize("delivery_solutions/errors/#{type.downcase}")
+        inflector.camelize("delivery_solutions_api/errors/#{type.downcase}")
       )
     rescue NameError => e
       Error.new(e.message)

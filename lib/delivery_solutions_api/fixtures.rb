@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module DeliverySolutions
+module DeliverySolutionsAPI
   module Fixtures
     module_function
 
@@ -65,7 +65,7 @@ module DeliverySolutions
       return {} unless key?(key)
 
       file = File.read(path(key))
-      JSON.parse(file)
+      JSON.parse(file, symbolize_names: true)
     end
 
     def key?(key)

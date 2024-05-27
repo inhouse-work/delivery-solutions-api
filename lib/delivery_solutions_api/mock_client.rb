@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module DeliverySolutions
+module DeliverySolutionsAPI
   class MockClient
     NoStubError = Class.new(NoMethodError)
 
@@ -15,7 +15,7 @@ module DeliverySolutions
       if available_response?(method_name)
         stubbed_response(method_name, ...)
       else
-        super(method_name, ...)
+        super
       end
     end
 

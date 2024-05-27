@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module DeliverySolutions
+module DeliverySolutionsAPI
   class Response
     attr_reader :payload
     ERROR_CODES = [

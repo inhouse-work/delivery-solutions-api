@@ -3,7 +3,7 @@
 require "net/http"
 require "uri"
 
-module DeliverySolutions
+module DeliverySolutionsAPI
   class Client
     PRODUCTION_URL = "https://production.api.deliverysolutions.co".freeze
     SANDBOX_URL = "https://sandbox.api.deliverysolutions.co".freeze

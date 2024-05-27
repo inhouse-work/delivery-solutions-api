@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe DeliverySolutions::Fixtures do
+RSpec.describe DeliverySolutionsAPI::Fixtures do
   describe ".[]" do
     it "returns the specified fixture as a hash" do
       key = "order/create_order/201-result"

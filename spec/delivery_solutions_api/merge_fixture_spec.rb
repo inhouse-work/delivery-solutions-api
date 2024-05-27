@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe DeliverySolutions::MergeFixture do
+RSpec.describe DeliverySolutionsAPI::MergeFixture do
   describe ".call" do
     it "raises an argument error on an unsupported payload" do
       command = -> do

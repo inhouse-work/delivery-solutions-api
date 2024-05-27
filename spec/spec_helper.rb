@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "delivery_solutions"
+require "delivery_solutions_api"
 require "debug"
 
 RSpec.configure do |config|

@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "lib/delivery_solutions/version"
+require_relative "lib/delivery_solutions_api/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "delivery_solutions"
-  spec.version = DeliverySolutions::VERSION
+  spec.name = "delivery_solutions_api"
+  spec.version = DeliverySolutionsAPI::VERSION
   spec.authors = ["Andrew L Donald"]
   spec.email = ["andrewdonalddev@gmail.com"]
 
@@ -35,6 +35,7 @@ Gem::Specification.new do |spec|
   # Uncomment to register a new dependency of your gem
   spec.add_dependency "dry-inflector"
   spec.add_dependency "hashie"
+  spec.add_dependency "zeitwerk"
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html
