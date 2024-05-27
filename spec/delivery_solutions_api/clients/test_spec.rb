@@ -29,7 +29,7 @@ RSpec.describe DeliverySolutionsAPI::Clients::Test do
         .stub(get_order: { id: "555" })
 
       expect(client.stubs.keys).to contain_exactly(:create_order, :get_order)
-      expect(client.get_order.payload.id).to eq "555"
+      expect(client.get_order(id: "123").payload.id).to eq "555"
       expect(client.create_order.payload).to eq JSON.parse(response_payload)
     end
 
@@ -62,16 +62,6 @@ RSpec.describe DeliverySolutionsAPI::Clients::Test do
       response = subject.stub(create_order: response_payload).create_order
 
       expect(response.payload.pickUpAddress.street).to eq "345 Harrison Avenue"
-    end
-
-    it "rejects non-stubbable methods" do
-      expect { subject.incorrect_method }
-        .to raise_error DeliverySolutionsAPI::Clients::Test::NoStubError
-    end
-
-    it "raises an error when a stub wasn't provided and there's no fixture" do
-      expect { described_class.new.unavailable_request }
-        .to raise_error(DeliverySolutionsAPI::Clients::Test::NoStubError)
     end
 
     it "returns an invalid data payload when storeExternalId isn't provided" do
@@ -124,7 +114,7 @@ RSpec.describe DeliverySolutionsAPI::Clients::Test do
     FIXTURES.each do |method, path|
       it "returns the fixture as the response for the #{method} method" do
         fixture_payload = JSON.parse(File.read("fixtures/#{path}.json"))
-        response = described_class.new(raise_api_errors: false).send(method)
+        response = described_class.new(raise_api_errors: false).send(method, {})
 
         test_payload = if fixture_payload.is_a? Hash
           response.payload

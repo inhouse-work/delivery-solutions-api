@@ -5,7 +5,7 @@ require "uri"
 
 module DeliverySolutionsAPI
   module Clients
-    class Production
+    class Production < Client
       PRODUCTION_URL = "https://production.api.deliverysolutions.co".freeze
       SANDBOX_URL = "https://sandbox.api.deliverysolutions.co".freeze
 

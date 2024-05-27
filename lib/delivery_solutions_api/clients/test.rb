@@ -2,7 +2,7 @@
 
 module DeliverySolutionsAPI
   module Clients
-    class Test
+    class Test < Client
       NoStubError = Class.new(NoMethodError)
 
       attr_reader :stubs
@@ -12,19 +12,57 @@ module DeliverySolutionsAPI
         @stubs = {}
       end
 
-      def method_missing(method_name, ...)
-        if available_response?(method_name)
-          stubbed_response(method_name, ...)
-        else
-          super
-        end
+      def create_order(...)
+        stubbed_response(:create_order, ...)
       end
 
-      # rubocop:disable Lint/UnusedMethodArgument
-      def respond_to_missing?(method_name, include_private = false)
-        @stubs.include?(method_name) || Fixtures.exists_for_method?(method_name)
+      def get_rates(...)
+        stubbed_response(:get_rates, ...)
       end
-      # rubocop:enable Lint/UnusedMethodArgument
+
+      def get_order(...)
+        stubbed_response(:get_order, ...)
+      end
+
+      def list_locations(...)
+        stubbed_response(:list_locations, ...)
+      end
+
+      def get_alternate_locations(...)
+        stubbed_response(:get_alternate_locations, ...)
+      end
+
+      def get_location(...)
+        stubbed_response(:get_location, ...)
+      end
+
+      def get_order_status(...)
+        stubbed_response(:get_order_status, ...)
+      end
+
+      def update_order_status(...)
+        stubbed_response(:update_order_status, ...)
+      end
+
+      def list_orders(...)
+        stubbed_response(:list_orders, ...)
+      end
+
+      def retry_order(...)
+        stubbed_response(:retry_order, ...)
+      end
+
+      def edit_order(...)
+        stubbed_response(:edit_order, ...)
+      end
+
+      def cancel_order(...)
+        stubbed_response(:cancel_order, ...)
+      end
+
+      def create_location(...)
+        stubbed_response(:create_location, ...)
+      end
 
       def stub(status = :success, **methods)
         unless %i[success failure].include?(status)
@@ -50,19 +88,6 @@ module DeliverySolutionsAPI
       end
 
       private
-
-      def raise_stub_not_provided(method_name)
-        raise(
-          NoStubError,
-          "No stub with name #{method_name} was provided to the test client"
-        )
-      end
-
-      def available_response?(method_name)
-        @stubs.include?(method_name) || Fixtures.exists_for_method?(method_name)
-      rescue KeyError
-        raise_stub_not_provided(method_name)
-      end
 
       def stubbed_response(method_name, ...)
         payload = @stubs.fetch(method_name) do
