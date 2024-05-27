@@ -20,7 +20,7 @@ FIXTURES = {
 RSpec.describe DeliverySolutionsAPI::MockClient do
   context "creating an order" do
     let(:response_payload) do
-      File.read("lib/fixtures/order/create_order/201-result.json")
+      File.read("fixtures/order/create_order/201-result.json")
     end
 
     it "creates the stub" do
@@ -75,14 +75,14 @@ RSpec.describe DeliverySolutionsAPI::MockClient do
     end
 
     it "returns an invalid data payload when storeExternalId isn't provided" do
-      error_payload = File.read("lib/fixtures/errors/invalid_data.json")
+      error_payload = File.read("fixtures/errors/invalid_data.json")
 
       expect { subject.stub(create_order: error_payload).create_order }
         .to raise_error DeliverySolutionsAPI::Errors::InvalidData
     end
 
     it "returns the error response instead of raising if specified" do
-      error_payload = File.read("lib/fixtures/errors/invalid_data.json")
+      error_payload = File.read("fixtures/errors/invalid_data.json")
       response = described_class.new(raise_api_errors: false).stub(
         create_order: error_payload
       ).create_order
@@ -123,7 +123,7 @@ RSpec.describe DeliverySolutionsAPI::MockClient do
   describe "returns fixtures when handed an available relevant method" do
     FIXTURES.each do |method, path|
       it "returns the fixture as the response for the #{method} method" do
-        fixture_payload = JSON.parse(File.read("lib/fixtures/#{path}.json"))
+        fixture_payload = JSON.parse(File.read("fixtures/#{path}.json"))
         response = described_class.new(raise_api_errors: false).send(method)
 
         test_payload = if fixture_payload.is_a? Hash

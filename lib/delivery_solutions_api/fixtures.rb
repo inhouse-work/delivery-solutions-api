@@ -73,7 +73,7 @@ module DeliverySolutionsAPI
     end
 
     def path(key)
-      GEM_ROOT.join("lib/fixtures", "#{key}.json")
+      GEM_ROOT.join("fixtures", "#{key}.json")
     end
 
     def find_path_for_method(method, status = :success)

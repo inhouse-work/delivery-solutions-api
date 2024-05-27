@@ -21,7 +21,7 @@ RSpec.describe DeliverySolutionsAPI::Response do
     end
 
     it "handles a 500 server error payload" do
-      payload = DeliverySolutions::Payload.new(
+      payload = DeliverySolutionsAPI::Payload.new(
         {
           statusCode: 500,
           message: "Internal server error"
