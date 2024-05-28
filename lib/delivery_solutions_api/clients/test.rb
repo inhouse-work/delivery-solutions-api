@@ -70,7 +70,13 @@ module DeliverySolutionsAPI
         end
 
         methods = methods.transform_values do |payload|
-          payload = JSON.parse(payload) if payload.is_a? String
+          if payload.is_a? String
+            payload = JSON.parse(
+              payload,
+              symbolize_names: true
+            )
+          end
+
           payload
         end
 
