@@ -59,7 +59,6 @@ module DeliverySolutionsAPI
       }
 
     }.freeze
-    public_constant :PATHS
 
     def [](key)
       return {} unless key?(key)

@@ -2,6 +2,14 @@
 
 module DeliverySolutionsAPI
   class Client
+    def self.build(test: false, raise_api_errors: true, **)
+      if test
+        Clients::TestClient.new(raise_api_errors:)
+      else
+        Clients::ProductionClient.new(**)
+      end
+    end
+
     def get_rates(params)
       raise NotImplementedError
     end

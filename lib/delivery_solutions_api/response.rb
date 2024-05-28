@@ -26,7 +26,6 @@ module DeliverySolutionsAPI
 
     def error?
       return true if ERROR_CODES.include?(payload.statusCode)
-
       return false if payload.errors.nil?
 
       payload.errors.any?
