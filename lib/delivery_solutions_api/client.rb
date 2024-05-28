@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DeliverySolutionsAPI
   class Client
     def get_rates(params)

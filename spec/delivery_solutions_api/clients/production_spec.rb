@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe DeliverySolutionsAPI::Clients::Production do
   let(:params) do
     {

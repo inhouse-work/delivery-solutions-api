@@ -6,8 +6,8 @@ require "uri"
 module DeliverySolutionsAPI
   module Clients
     class Production < Client
-      PRODUCTION_URL = "https://production.api.deliverysolutions.co".freeze
-      SANDBOX_URL = "https://sandbox.api.deliverysolutions.co".freeze
+      PRODUCTION_URL = "https://production.api.deliverysolutions.co"
+      SANDBOX_URL = "https://sandbox.api.deliverysolutions.co"
 
       MissingApiKey = Class.new(ArgumentError)
       MissingTenantId = Class.new(ArgumentError)
@@ -53,7 +53,6 @@ module DeliverySolutionsAPI
       end
 
       def headers
-        # rubocop:disable Style/StringHashKeys
         {
           "Content-Type" => "application/json",
           "x-api-key" => @api_key,

@@ -3,11 +3,12 @@
 module DeliverySolutionsAPI
   class Response
     attr_reader :payload
+
     ERROR_CODES = [
       500,
       400,
       404
-    ]
+    ].freeze
 
     def self.parse(payload)
       payload = case payload

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DeliverySolutionsAPI
   class Inflector < Zeitwerk::GemInflector
     def camelize(basename, abspath)

@@ -65,7 +65,7 @@ module DeliverySolutionsAPI
       end
 
       def stub(status = :success, **methods)
-        unless %i[success failure].include?(status)
+        if %i[success failure].exclude?(status)
           raise ArgumentError, "Invalid status '#{status}' provided to #stub"
         end
 
