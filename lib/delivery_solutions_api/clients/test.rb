@@ -65,7 +65,7 @@ module DeliverySolutionsAPI
       end
 
       def stub(status = :success, **methods)
-        if %i[success failure].exclude?(status)
+        unless %i[success failure].include?(status) # rubocop:disable Style/InvertibleUnlessCondition
           raise ArgumentError, "Invalid status '#{status}' provided to #stub"
         end
 

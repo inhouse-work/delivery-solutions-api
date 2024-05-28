@@ -18,11 +18,7 @@ module DeliverySolutionsAPI
   GEM_ROOT = Pathname.new(__dir__).join("../").freeze
   public_constant :GEM_ROOT
 
-  def new(test: false, raise_api_errors: true, **)
-    if test
-      Clients::Test.new(raise_api_errors:)
-    else
-      Clients::Production.new(**)
-    end
+  def new(...)
+    Client.build(...)
   end
 end
