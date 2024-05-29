@@ -2,9 +2,14 @@
 
 module DeliverySolutionsAPI
   class Client
-    def self.build(test: false, raise_api_errors: true, **)
+    def self.build(
+      test: false,
+      raise_api_errors: true,
+      default_stub: :success,
+      **
+    )
       if test
-        Clients::Test.new(raise_api_errors:)
+        Clients::Test.new(raise_api_errors:, default_stub:)
       else
         Clients::Production.new(**)
       end
