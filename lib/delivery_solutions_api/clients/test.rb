@@ -7,9 +7,10 @@ module DeliverySolutionsAPI
 
       attr_reader :stubs
 
-      def initialize(raise_api_errors: true)
+      def initialize(raise_api_errors: true, default_stub: :success)
         @raise_api_errors = raise_api_errors
         @stubs = {}
+        @default_stub = default_stub
       end
 
       def create_order(...)
@@ -97,7 +98,7 @@ module DeliverySolutionsAPI
 
       def stubbed_response(method_name, ...)
         payload = @stubs.fetch(method_name) do
-          path = Fixtures.find_path_for_method(method_name)
+          path = Fixtures.find_path_for_method(method_name, @default_stub)
           Fixtures[path]
         end
 

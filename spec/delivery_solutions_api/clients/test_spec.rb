@@ -108,6 +108,15 @@ RSpec.describe DeliverySolutionsAPI::Clients::Test do
 
       expect(failure_response.success?).to be false
     end
+
+    it "hands back default failure response with plain stubbing of :failure" do
+      failure_client = described_class.new(
+        raise_api_errors: false,
+        default_stub: :failure
+      )
+
+      expect(failure_client.cancel_order.success?).to be false
+    end
   end
 
   describe "returns fixtures when handed an available relevant method" do
