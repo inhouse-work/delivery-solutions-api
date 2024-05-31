@@ -12,43 +12,56 @@ module DeliverySolutionsAPI
       MissingApiKey = Class.new(ArgumentError)
       MissingTenantId = Class.new(ArgumentError)
 
-      def initialize(
+      def self.build(
         api_key: ENV.fetch("DELIVERY_SOLUTIONS_API_KEY", nil),
         tenant_id: ENV.fetch("DELIVERY_SOLUTIONS_TENANT_ID", nil),
         base_url: PRODUCTION_URL
       )
+        url = URI.parse(base_url)
+        http = ::Net::HTTP.new(url.host, url.port).tap do |http|
+          http.use_ssl = true
+        end
+
+        new(api_key:, tenant_id:, http:)
+      end
+
+      def initialize(http:, api_key:, tenant_id:)
         raise MissingApiKey, "Missing API key" if api_key.nil?
         raise MissingTenantId, "Missing tenant ID" if tenant_id.nil?
 
         @api_key = api_key
         @tenant_id = tenant_id
-        @base_url = base_url
+        @http = http
+        @url = URI.parse(@http.address)
       end
 
-      def get_rates(params)
+      def get_rates(**params)
         path = "/api/v2/rates"
-        post(path, params)
+        post(path:, params:)
       end
 
-      def create_order(params)
+      def create_order(**params)
         path = "/api/v2/order/placeorderasync"
-        post(path, params)
+        post(path:, params:)
       end
 
       private
 
-      def get(path)
-        uri = ::URI.parse(@base_url + path)
-        uri.query = ::URI.encode_www_form(params)
-        request = ::Net::HTTP::Get.new(uri, headers)
-        response = http.request(request)
-        Response.parse(response.read_body)
+      def get(path:, params: {})
+        @url.dup.tap do |url|
+          url.path = path
+          url.query = ::URI.encode_www_form(params)
+          response = @http.get(url.path, headers)
+          Response.parse(response.read_body)
+        end
       end
 
-      def post(path, params)
-        uri = ::URI.parse(@base_url + path)
-        request = ::Net::HTTP::Post.new(uri, headers)
-        response = http(uri).request(request, JSON.stringify(params))
+      def post(path:, params:)
+        response = @http.post(
+          path,
+          DeliverySolutionsAPI::JSON.stringify(params),
+          headers
+        )
         Response.parse(response.read_body)
       end
 
@@ -58,13 +71,6 @@ module DeliverySolutionsAPI
           "x-api-key" => @api_key,
           "tenantid" => @tenant_id
         }
-        # rubocop:enable Style/StringHashKeys
-      end
-
-      def http(uri)
-        ::Net::HTTP.new(uri.host, uri.port).tap do |http|
-          http.use_ssl = true
-        end
       end
     end
   end

@@ -9,9 +9,9 @@ module DeliverySolutionsAPI
       **
     )
       if test
-        Clients::Test.new(raise_api_errors:, default_stub:)
+        Clients::Test.build(raise_api_errors:, default_stub:)
       else
-        Clients::Production.new(**)
+        Clients::Production.build(**)
       end
     end
 

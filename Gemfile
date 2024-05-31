@@ -5,6 +5,7 @@ source "https://rubygems.org"
 # Specify your gem's dependencies in delivery_solutions.gemspec
 gemspec
 
+gem "amazing_print"
 gem "debug"
 gem "rake"
 gem "rspec"

@@ -7,6 +7,10 @@ module DeliverySolutionsAPI
 
       attr_reader :stubs
 
+      def self.build(...)
+        new(...)
+      end
+
       def initialize(raise_api_errors: true, default_stub: :success)
         @raise_api_errors = raise_api_errors
         @stubs = {}
