@@ -9,8 +9,12 @@ module DeliverySolutionsAPI
       PRODUCTION_URL = "https://production.api.deliverysolutions.co"
       SANDBOX_URL = "https://sandbox.api.deliverysolutions.co"
 
-      def self.build(base_url: PRODUCTION_URL)
-        url = URI.parse(base_url)
+      def self.build(sandbox: false)
+        url = if sandbox
+          URI.parse(SANDBOX_URL)
+        else
+          URI.parse(PRODUCTION_URL)
+        end
         http = ::Net::HTTP.new(url.host, url.port).tap do |http|
           http.use_ssl = true
         end

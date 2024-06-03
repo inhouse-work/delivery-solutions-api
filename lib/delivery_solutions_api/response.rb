@@ -17,6 +17,9 @@ module DeliverySolutionsAPI
                 when Array then { collection: payload }
       end
 
+      # NOTE: Handling case where payload is a String Array that got parsed
+      payload = { collection: payload } if payload.is_a?(Array)
+
       new(payload)
     end
 

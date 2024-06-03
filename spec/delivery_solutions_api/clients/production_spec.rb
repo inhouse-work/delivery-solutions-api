@@ -36,8 +36,18 @@ RSpec.describe DeliverySolutionsAPI::Clients::Production do
   end
 
   describe "#list_locations" do
-    it "returns locations" do
+    it "returns success" do
       response = double("response", read_body: [])
+      http = double("client", get: response, address: "https://example.com")
+      client = described_class.new(http:)
+      result = client.list_locations(session:)
+
+      expect(result).to be_success
+    end
+
+    it "handles the array we get back from DS" do
+      read_body = File.read("fixtures/pickup_location/list_locations/200-result.json")
+      response = double("response", read_body:)
       http = double("client", get: response, address: "https://example.com")
       client = described_class.new(http:)
       result = client.list_locations(session:)
