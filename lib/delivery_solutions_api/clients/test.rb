@@ -5,6 +5,8 @@ module DeliverySolutionsAPI
     class Test < Client
       NoStubError = Class.new(NoMethodError)
 
+      SessionKeyNotProvided = Class.new(ArgumentError)
+
       attr_reader :stubs
 
       def self.build(...)
@@ -100,7 +102,9 @@ module DeliverySolutionsAPI
 
       private
 
-      def stubbed_response(method_name, ...)
+      def stubbed_response(method_name, *args, **kwargs)
+        raise SessionKeyNotProvided unless kwargs.key?(:session)
+
         payload = @stubs.fetch(method_name) do
           path = Fixtures.find_path_for_method(method_name, @default_stub)
           Fixtures[path]

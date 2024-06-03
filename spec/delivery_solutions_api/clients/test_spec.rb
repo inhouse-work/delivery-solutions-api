@@ -29,37 +29,47 @@ RSpec.describe DeliverySolutionsAPI::Clients::Test do
         .stub(get_order: { id: "555" })
 
       expect(client.stubs.keys).to contain_exactly(:create_order, :get_order)
-      expect(client.get_order(id: "123").payload.id).to eq "555"
-      expect(client.create_order.payload).to eq JSON.parse(response_payload)
+      expect(client.get_order(session: {}, id: "123").payload.id).to eq "555"
+      expect(client.create_order(session: {}).payload).to eq JSON.parse(response_payload)
     end
 
     it "allows accessing data via methods" do
-      response = described_class.new.stub(create_order: response_payload).create_order
+      response = described_class.new.stub(
+        create_order: response_payload
+      ).create_order(session: {})
 
       expect(response.payload.storeExternalId).to eq "7709"
     end
 
     it "allows using a simple hash as a payload that overwrites the default" do
-      response = described_class.new.stub(create_order: { storeExternalId: "7709" }).create_order
+      response = described_class.new.stub(
+        create_order: { storeExternalId: "7709" }
+      ).create_order(session: {})
 
       expect(response.payload.storeExternalId).to eq "7709"
       expect(response.payload.deliveryContact.phone).to eq "+1 234-567-8900"
     end
 
     it "gets the correct data from the nested delivery address" do
-      response = subject.stub(create_order: response_payload).create_order
+      response = subject.stub(
+        create_order: response_payload
+      ).create_order(session: {})
 
       expect(response.payload.deliveryAddress.street).to eq "725 Albany Street"
     end
 
     it "gets the correct data from the nested delivery contact" do
-      response = subject.stub(create_order: response_payload).create_order
+      response = subject.stub(
+        create_order: response_payload
+      ).create_order(session: {})
 
       expect(response.payload.deliveryContact.phone).to eq "+1 234-567-8900"
     end
 
     it "gets the correct data from the nested pickup address" do
-      response = subject.stub(create_order: response_payload).create_order
+      response = subject.stub(
+        create_order: response_payload
+      ).create_order(session: {})
 
       expect(response.payload.pickUpAddress.street).to eq "345 Harrison Avenue"
     end
@@ -67,7 +77,7 @@ RSpec.describe DeliverySolutionsAPI::Clients::Test do
     it "returns an invalid data payload when storeExternalId isn't provided" do
       error_payload = File.read("fixtures/errors/invalid_data.json")
 
-      expect { subject.stub(create_order: error_payload).create_order }
+      expect { subject.stub(create_order: error_payload).create_order(session: {}) }
         .to raise_error DeliverySolutionsAPI::Errors::InvalidData
     end
 
@@ -75,7 +85,7 @@ RSpec.describe DeliverySolutionsAPI::Clients::Test do
       error_payload = File.read("fixtures/errors/invalid_data.json")
       response = described_class.new(raise_api_errors: false).stub(
         create_order: error_payload
-      ).create_order
+      ).create_order(session: {})
 
       expect(response.payload).to eq JSON.parse(error_payload)
     end
@@ -87,8 +97,12 @@ RSpec.describe DeliverySolutionsAPI::Clients::Test do
         .stub(list_locations: [{ name: "Stubbed Store" }])
         .stub(get_alternate_locations: [{ provider: "Stubbed Provider" }])
 
-      first_location = client.list_locations.payload.collection.first
-      first_alternate_location = client.get_alternate_locations.payload.collection.first
+      first_location = client.list_locations(
+        session: {}
+      ).payload.collection.first
+      first_alternate_location = client.get_alternate_locations(
+        session: {}
+      ).payload.collection.first
 
       expect(client.stubs.keys).to contain_exactly(:list_locations, :get_alternate_locations)
       expect(first_location.name).to eq "Stubbed Store"
@@ -96,7 +110,7 @@ RSpec.describe DeliverySolutionsAPI::Clients::Test do
     end
 
     it "returns an argument error if an invalid status stub is provided" do
-      expect { subject.stub(:invalid_status, create_order: {}).create_order }
+      expect { subject.stub(:invalid_status, create_order: {}).create_order(session: {}) }
         .to raise_error ArgumentError
     end
 
@@ -104,7 +118,7 @@ RSpec.describe DeliverySolutionsAPI::Clients::Test do
       failure_response = described_class.new(raise_api_errors: false).stub(
         :failure,
         create_order: {}
-      ).create_order
+      ).create_order(session: {})
 
       expect(failure_response.success?).to be false
     end
@@ -115,7 +129,7 @@ RSpec.describe DeliverySolutionsAPI::Clients::Test do
         default_stub: :failure
       )
 
-      expect(failure_client.cancel_order.success?).to be false
+      expect(failure_client.cancel_order(session: {}).success?).to be false
     end
   end
 
@@ -123,7 +137,9 @@ RSpec.describe DeliverySolutionsAPI::Clients::Test do
     FIXTURES.each do |method, path|
       it "returns the fixture as the response for the #{method} method" do
         fixture_payload = JSON.parse(File.read("fixtures/#{path}.json"))
-        response = described_class.new(raise_api_errors: false).send(method, {})
+        response = described_class.new(
+          raise_api_errors: false
+        ).send(method, session: {})
 
         test_payload = if fixture_payload.is_a? Hash
           response.payload

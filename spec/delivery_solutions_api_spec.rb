@@ -8,7 +8,7 @@ RSpec.describe DeliverySolutionsAPI do
     end
 
     it "returns a client" do
-      client = described_class.new(api_key: "123", tenant_id: "456")
+      client = described_class.new
       expect(client).to be_a DeliverySolutionsAPI::Clients::Production
     end
   end
