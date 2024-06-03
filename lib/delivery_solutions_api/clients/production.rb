@@ -28,10 +28,10 @@ module DeliverySolutionsAPI
         post(session:, path:, params:)
       end
 
-      # def list_locations
-      #   path = "/api/v2/store"
-      #   get(path:)
-      # end
+      def list_locations(session:)
+        path = "/api/v2/store"
+        get(session:, path:)
+      end
 
       def create_order(session:, **params)
         path = "/api/v2/order/placeorderasync"
@@ -41,7 +41,7 @@ module DeliverySolutionsAPI
       private
 
       def get(session:, path:, params: {})
-        @url.dup.tap do |url|
+        @url.dup.then do |url|
           url.path = path
           url.query = ::URI.encode_www_form(params)
           response = @http.get(url.path, headers(session))

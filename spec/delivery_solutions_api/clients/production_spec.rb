@@ -34,4 +34,15 @@ RSpec.describe DeliverySolutionsAPI::Clients::Production do
       expect(result).to be_success
     end
   end
+
+  describe "#list_locations" do
+    it "returns locations" do
+      response = double("response", read_body: [])
+      http = double("client", get: response, address: "https://example.com")
+      client = described_class.new(http:)
+      result = client.list_locations(session:)
+
+      expect(result).to be_success
+    end
+  end
 end
