@@ -55,4 +55,18 @@ RSpec.describe DeliverySolutionsAPI::Clients::Production do
       expect(result).to be_success
     end
   end
+
+  describe "#create_location" do
+    it "returns success" do
+      response = double("response", read_body: {}.to_json)
+      http = double("client", post: response, address: "https://example.com")
+      client = described_class.new(http:)
+      result = client.create_location(
+        session:,
+        params: {}
+      )
+
+      expect(result).to be_success
+    end
+  end
 end

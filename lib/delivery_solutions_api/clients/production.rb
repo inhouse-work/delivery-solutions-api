@@ -42,6 +42,11 @@ module DeliverySolutionsAPI
         post(session:, path:, params:)
       end
 
+      def create_location(session:, params:)
+        path = "/api/v2/store"
+        post(session:, path:, params:)
+      end
+
       private
 
       def get(session:, path:, params: {})
