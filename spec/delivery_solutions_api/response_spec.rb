@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe DeliverySolutionsAPI::Response do
-  describe ".error_response?" do
+  describe "#error?" do
     it "returns false when errors aren't present" do
       payload = DeliverySolutionsAPI::Payload.new({ errors: [] })
 
@@ -32,11 +32,26 @@ RSpec.describe DeliverySolutionsAPI::Response do
     end
   end
 
-  describe ".success?" do
+  describe "#success?" do
     it "returns true when request was successful" do
       payload = DeliverySolutionsAPI::Payload.new({ errors: [] })
 
       expect(described_class.new(payload).success?).to be true
+    end
+  end
+
+  describe ".parse" do
+    it "overrides to_s to inspect for showing internal attributes" do
+      response = File
+        .read("fixtures/order/create_order/400-result.json")
+        .then { |json| JSON.parse(json, symbolize_names: true) }
+
+      payload = DeliverySolutionsAPI::Payload.new(response)
+      response = described_class.parse(payload)
+
+      expect(response.success?).to be false
+      expect(response).to be_a described_class
+      expect(response.to_s).to eq response.inspect
     end
   end
 end

@@ -37,5 +37,9 @@ module DeliverySolutionsAPI
     def success?
       !error?
     end
+
+    def to_s
+      inspect
+    end
   end
 end
