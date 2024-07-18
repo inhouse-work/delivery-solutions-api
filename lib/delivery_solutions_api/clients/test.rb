@@ -19,8 +19,10 @@ module DeliverySolutionsAPI
         @default_stub = default_stub
       end
 
-      def create_order(...)
-        stubbed_response(:create_order, ...)
+      def create_order(*, **kwargs)
+        stubbed_response(:create_order, *, **kwargs).tap do |response|
+          response.payload.orderExternalId = kwargs[:orderExternalId]
+        end
       end
 
       def get_rates(...)
@@ -63,8 +65,10 @@ module DeliverySolutionsAPI
         stubbed_response(:edit_order, ...)
       end
 
-      def cancel_order(...)
-        stubbed_response(:cancel_order, ...)
+      def cancel_order(*, **kwargs)
+        stubbed_response(:cancel_order, *, **kwargs).tap do |response|
+          response.payload.orderExternalId = kwargs[:orderExternalId]
+        end
       end
 
       def create_location(...)
