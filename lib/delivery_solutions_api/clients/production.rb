@@ -42,6 +42,11 @@ module DeliverySolutionsAPI
         post(session:, path:, params:)
       end
 
+      def cancel_order(session:, order_external_id:)
+        path = "/api/v2/order/orderExternalId/#{order_external_id}"
+        delete(session:, path:)
+      end
+
       def create_location(session:, params:)
         path = "/api/v2/store"
         post(session:, path:, params:)
@@ -64,6 +69,11 @@ module DeliverySolutionsAPI
           DeliverySolutionsAPI::JSON.stringify(params),
           headers(session)
         )
+        Response.parse(response.read_body)
+      end
+
+      def delete(session:, path:)
+        response = @http.delete(path, headers(session))
         Response.parse(response.read_body)
       end
 
