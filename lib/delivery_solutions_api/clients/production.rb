@@ -6,8 +6,8 @@ require "uri"
 module DeliverySolutionsAPI
   module Clients
     class Production < Client
-      PRODUCTION_URL = "https://production.api.deliverysolutions.co"
-      SANDBOX_URL = "https://sandbox.api.deliverysolutions.co"
+      PRODUCTION_URL = "https://production.api.deliverysolutions.co/"
+      SANDBOX_URL = "https://sandbox.api.deliverysolutions.co/"
 
       def self.build(sandbox: false)
         url = if sandbox
@@ -15,16 +15,15 @@ module DeliverySolutionsAPI
         else
           URI.parse(PRODUCTION_URL)
         end
-        http = ::Net::HTTP.new(url.host, url.port).tap do |http|
-          http.use_ssl = true
-        end
 
-        new(http:)
+        http = HTTPX
+
+        new(http:, url:)
       end
 
-      def initialize(http:)
+      def initialize(http:, url:)
         @http = http
-        @url = URI.parse(@http.address)
+        @url = URI(url)
       end
 
       def get_rates(session:, **params)
@@ -55,27 +54,30 @@ module DeliverySolutionsAPI
       private
 
       def get(session:, path:, params: {})
-        @url.dup.then do |url|
-          url.path = path
+        url_for(path).then do |url|
           url.query = ::URI.encode_www_form(params)
-          response = @http.get(url.path, headers(session))
-          Response.parse(response.read_body)
+          response = @http.get(url, headers: headers(session))
+          Response.parse(response.read)
         end
+      end
+
+      def url_for(path)
+        @url.dup.tap { |url| url.path = path }
       end
 
       def post(session:, path:, params:)
         response = @http.post(
-          path,
-          DeliverySolutionsAPI::JSON.stringify(params),
-          headers(session)
+          url_for(path),
+          json: params,
+          headers: headers(session)
         )
 
-        Response.parse(response.read_body)
+        Response.parse(response.read)
       end
 
       def delete(session:, path:)
-        response = @http.delete(path, headers(session))
-        Response.parse(response.read_body)
+        response = @http.delete(url_for(path), headers: headers(session))
+        Response.parse(response.read)
       end
 
       def headers(session)

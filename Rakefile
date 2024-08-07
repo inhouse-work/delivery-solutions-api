@@ -15,6 +15,7 @@ desc "Gets rates from the sandbox API"
 task get_rates: :environment do
   require "debug"
   require "dotenv/load"
+  require "json"
 
   client = DeliverySolutionsAPI::Client.build(sandbox: true)
   session = DeliverySolutionsAPI.build_session(
@@ -23,19 +24,14 @@ task get_rates: :environment do
   )
 
   params = {
-    "deliveryAddress": {
-      "country": "US",
-      "zipcode": "91367",
-      "state": "CA",
-      "city": "Woodland Hills",
-      "street": "24201 Burbank Blvd"
+    deliveryAddress: {
+      zipcode: "91367"
     },
-    "storeExternalIds": [
+    storeExternalIds: [
       "70786023599"
     ]
   }
 
   result = client.get_rates(session:, **params)
-
   debugger
 end
