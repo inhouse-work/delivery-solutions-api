@@ -35,6 +35,7 @@ Gem::Specification.new do |spec|
   # Uncomment to register a new dependency of your gem
   spec.add_dependency "dry-inflector"
   spec.add_dependency "hashie"
+  spec.add_dependency "httpx"
   spec.add_dependency "zeitwerk"
 
   # For more information and examples about making a new gem, check out our
