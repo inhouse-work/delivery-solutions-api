@@ -12,9 +12,9 @@ RSpec.describe DeliverySolutionsAPI::Clients::Production do
 
   describe "#get_rates" do
     it "returns rates" do
-      response = double("response", read_body: { "rates" => [] }.to_json)
-      http = double("client", post: response, address: "https://example.com")
-      client = described_class.new(http:)
+      response = double("response", read: { "rates" => [] }.to_json)
+      http = double("client", post: response)
+      client = described_class.new(http:, url: "https://example.com")
       result = client.get_rates(session:)
 
       expect(result).to be_success
@@ -23,9 +23,9 @@ RSpec.describe DeliverySolutionsAPI::Clients::Production do
 
   describe "#create_order" do
     it "returns rates" do
-      response = double("response", read_body: {}.to_json)
-      http = double("client", post: response, address: "https://example.com")
-      client = described_class.new(http:)
+      response = double("response", read: {}.to_json)
+      http = double("client", post: response)
+      client = described_class.new(http:, url: "https://example.com")
       result = client.create_order(
         session:,
         something: "something"
@@ -37,19 +37,19 @@ RSpec.describe DeliverySolutionsAPI::Clients::Production do
 
   describe "#list_locations" do
     it "returns success" do
-      response = double("response", read_body: [])
-      http = double("client", get: response, address: "https://example.com")
-      client = described_class.new(http:)
+      response = double("response", read: [])
+      http = double("client", get: response)
+      client = described_class.new(http:, url: "https://example.com")
       result = client.list_locations(session:)
 
       expect(result).to be_success
     end
 
     it "handles the array we get back from DS" do
-      read_body = File.read("fixtures/pickup_location/list_locations/200-result.json")
-      response = double("response", read_body:)
-      http = double("client", get: response, address: "https://example.com")
-      client = described_class.new(http:)
+      read = File.read("fixtures/pickup_location/list_locations/200-result.json")
+      response = double("response", read:)
+      http = double("client", get: response)
+      client = described_class.new(http:, url: "https://example.com")
       result = client.list_locations(session:)
 
       expect(result).to be_success
@@ -58,9 +58,9 @@ RSpec.describe DeliverySolutionsAPI::Clients::Production do
 
   describe "#create_location" do
     it "returns success" do
-      response = double("response", read_body: {}.to_json)
-      http = double("client", post: response, address: "https://example.com")
-      client = described_class.new(http:)
+      response = double("response", read: {}.to_json)
+      http = double("client", post: response)
+      client = described_class.new(http:, url: "https://example.com")
       result = client.create_location(
         session:,
         params: {}

@@ -21,7 +21,9 @@ module DeliverySolutionsAPI
 
       def create_order(*, **kwargs)
         stubbed_response(:create_order, *, **kwargs).tap do |response|
-          response.payload.orderExternalId = kwargs[:orderExternalId]
+          if kwargs.key?(:orderExternalId)
+            response.payload.orderExternalId = kwargs[:orderExternalId]
+          end
         end
       end
 
@@ -67,7 +69,9 @@ module DeliverySolutionsAPI
 
       def cancel_order(*, **kwargs)
         stubbed_response(:cancel_order, *, **kwargs).tap do |response|
-          response.payload.orderExternalId = kwargs[:orderExternalId]
+          if kwargs.key?(:orderExternalId)
+            response.payload.orderExternalId = kwargs[:orderExternalId]
+          end
         end
       end
 
