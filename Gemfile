@@ -5,8 +5,8 @@ source "https://rubygems.org"
 # Specify your gem's dependencies in delivery_solutions.gemspec
 gemspec
 
-gem "amazing_print"
 gem "debug"
+gem "dotenv"
 gem "rake"
 gem "rspec"
 gem "rubocop-inhouse", require: false

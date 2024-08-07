@@ -69,6 +69,7 @@ module DeliverySolutionsAPI
           DeliverySolutionsAPI::JSON.stringify(params),
           headers(session)
         )
+
         Response.parse(response.read_body)
       end
 
@@ -79,9 +80,11 @@ module DeliverySolutionsAPI
 
       def headers(session)
         {
-          "Content-Type" => "application/json",
+          "accept" => "application/json",
+          "content-type" => "application/json",
+          "x-compression" => "true",
           "x-api-key" => session.api_key,
-          "tenantid" => session.tenant_id
+          "tenantId" => session.tenant_id
         }
       end
     end

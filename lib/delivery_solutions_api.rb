@@ -4,7 +4,6 @@ require "zeitwerk"
 require "dry/inflector"
 require "hashie"
 require "json"
-require "debug"
 
 require_relative "delivery_solutions_api/inflector"
 
