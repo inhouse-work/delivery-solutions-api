@@ -73,8 +73,8 @@ RSpec.describe DeliverySolutionsAPI::Clients::Production do
 
   describe "#create_location" do
     it "returns success" do
-      response = double("response", read: {}.to_json)
-      http = double("client", post: response)
+      response = http_response(body: {})
+      http = http_client(post: response)
       client = described_class.new(http:, url: "https://example.com")
       result = client.create_location(
         session:,

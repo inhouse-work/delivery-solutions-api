@@ -5,11 +5,10 @@ module DeliverySolutionsAPI
     def self.build(
       test: false,
       raise_api_errors: true,
-      default_stub: :success,
       **
     )
       if test
-        Clients::Test.build(raise_api_errors:, default_stub:)
+        Clients::Test.build(raise_api_errors:)
       else
         Clients::Production.build(**)
       end

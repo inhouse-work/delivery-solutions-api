@@ -60,19 +60,35 @@ module DeliverySolutionsAPI
 
     }.freeze
 
-    def [](key)
-      return {} unless key?(key)
+    def [](path, status)
+      return {} unless directory_exists?(path)
+      return {} unless fixture_exists?(path, status)
 
-      file = File.read(path(key))
+      file = File.read(full_path(path, status))
       JSON.parse(file, symbolize_names: true)
     end
 
-    def key?(key)
-      File.exist?(path(key))
+    def fixture_exists?(path, status)
+      full_path = full_path(path, status)
+      return false if full_path.nil?
+
+      File.exist?(full_path)
     end
 
-    def path(key)
-      GEM_ROOT.join("fixtures", "#{key}.json")
+    def directory_exists?(path)
+      directory = GEM_ROOT.join("fixtures", path)
+
+      Dir.exist?(directory)
+    end
+
+    def full_path(path, status)
+      directory = GEM_ROOT.join("fixtures", path)
+
+      directory.children.find do |fixture|
+        file_name = fixture.to_path.split("/").last
+
+        file_name.include?(status.to_s)
+      end
     end
 
     def find_path_for_method(method, status = :success)

@@ -30,7 +30,7 @@ module DeliverySolutionsAPI
     end
 
     def error?
-      ERROR_CODES.include?(payload.statusCode)
+      ERROR_CODES.include?(@status)
     end
 
     def success?

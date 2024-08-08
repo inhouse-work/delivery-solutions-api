@@ -32,8 +32,6 @@ module DeliverySolutionsAPI
   end
 
   def fixture(path, status: 200)
-    raise NotImplementedError
-
     Fixtures[path, status]
   end
 end
