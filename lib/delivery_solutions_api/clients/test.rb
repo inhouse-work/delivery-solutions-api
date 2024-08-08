@@ -7,50 +7,47 @@ module DeliverySolutionsAPI
         new(raise_api_errors:)
       end
 
-      def initialize(raise_api_errors: true)
+      def initialize(raise_api_errors: true, status:)
         @raise_api_errors = raise_api_errors
+        @status = status
       end
 
-      def get_rates(status:, **)
-        fixture = get_fixture(path: "rates/get_rates", status:)
+      def get_rates(**)
+        fixture = get_fixture(path: "rates/get_rates")
         merge_fixture(fixture, **)
       end
 
-      def list_locations(status:, **)
-        fixture = get_fixture(path: "pickup_location/list_locations", status:)
+      def list_locations(**)
+        fixture = get_fixture(path: "pickup_location/list_locations")
         merge_fixture(fixture, **)
       end
 
-      def create_order(status:, **)
-        fixture = get_fixture(path: "order/create_order", status:)
+      def create_order(**)
+        fixture = get_fixture(path: "order/create_order")
         merge_fixture(fixture, **)
       end
 
-      def cancel_order(status:, **)
-        fixture = get_fixture(path: "order/cancel_order", status:)
+      def cancel_order(**)
+        fixture = get_fixture(path: "order/cancel_order")
         merge_fixture(fixture, **)
       end
 
-      def create_location(status:, **)
-        fixture = get_fixture(path: "pickup_location/create_location", status:)
+      def create_location(**)
+        fixture = get_fixture(path: "pickup_location/create_location")
         merge_fixture(fixture, **)
       end
 
       private
 
-      def get_fixture(path:, status:)
-        Fixtures[path, status]
+      def get_fixture(path:)
+        Fixtures[path, @status]
       end
 
       def merge_fixture(fixture, **)
         return fixture if fixture.is_a?(Array)
 
-        case
-        when fixture.keys.size > 1
-          return fixture.merge(**)
-        when fixture[fixture.keys.first].is_a?(Array)
-          return fixture
-        end
+        return fixture.merge(**) if fixture.keys.size > 1
+        return fixture if fixture.values.first.is_a?(Array)
 
         fixture
       end

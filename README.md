@@ -4,32 +4,84 @@
 API, enabling users to integrate last-mile delivery orchestration with their
 online stores.
 
-<!-- ## Installation -->
+## Usage
 
-<!-- TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org. -->
-<!---->
-<!-- Install the gem and add to the application's Gemfile by executing: -->
-<!---->
-<!--     $ bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG -->
-<!---->
-<!-- If bundler is not being used to manage dependencies, install the gem by executing: -->
-<!---->
-<!--     $ gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG -->
+### Testing with Fixtures
 
-<!-- ## Usage -->
-<!---->
-<!-- TODO: Write usage instructions here -->
-<!---->
-<!-- ## Development -->
-<!---->
-<!-- After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment. -->
-<!---->
-<!-- To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org). -->
-<!---->
-<!-- ## Contributing -->
-<!---->
-<!-- Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/delivery_solutions. -->
-<!---->
+You can use the DeliverySolutionsAPI method `.stubbed_response` to get fixture
+responses:
+
+```ruby
+  # This will return the default success fixture
+  DeliverySolutionsAPI.stubbed_response("get_rates")
+```
+
+If you want to return a specific fixture, you'll have to specify a response
+code:
+
+```ruby
+  # This will return the payload for a 400 error on a get_rates request
+  DeliverySolutionsAPI.stubbed_response("get_rates", status_code: 400)
+```
+
+If you use the `.stubbed_response` without arguments, you'll receive
+a `NotImplementedError` when you attempt to make requests. This is to ensure
+that no live API calls are made through the test client, and forces users to
+specify desired fixtures while testing.
+
+Say you're testing the class below, and want to avoid making API calls, but
+still need to have the returned data match your database data:
+
+```ruby
+class FetchRates
+  def initialize(client:)
+    @client = client
+  end
+
+  def call(**)
+    @client.get_rates(**).payload.rates.each do |rate|
+      Order.find_by!(storeExternalId: rate.storeExternalId)
+    end
+    # -> Response
+  end
+end
+```
+
+In order to stub the deeply nested rates so that they contain the correct data
+to find your Orders, simply stub it out in your test framework:
+
+```ruby
+  instance_double(
+    DeliverySolutionsAPI.test_client,
+    **
+  )
+```
+
+Then you can manipulate the data as you please:
+
+```ruby
+# RSpec example test
+it "fetches delivery solutions rates and processes them" do
+  get_rates = DeliverySolutionsAPI.stubbed_response("get_rates").tap do |response|
+    response.payload.rates.map do |rate|
+      rate.storeExternalId = "something"
+    end
+  end
+
+  client = instance_double(
+    DeliverySolutionsAPI.test_client,
+    get_rates:
+  )
+
+  fetch_rates = Fetchrates.new(client:)
+  response = fetch_rates.call(**)
+
+  expect(response).to be_success
+  expect(response.storeExternalId).to eq "something"
+end
+```
+
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
