@@ -1,0 +1,10 @@
+{
+  "errors": [
+    {
+      "type": "NOT_FOUND",
+      "message": "Walmart GoLocal DSP is not configure in system"
+    }
+  ],
+  "type": "NOT_FOUND",
+  "message": "Walmart GoLocal DSP is not configure in system"
+}
