@@ -2,15 +2,14 @@
 
 module DeliverySolutionsAPI
   class Response
-    attr_reader :payload
-
     ERROR_CODES = [
       500,
       400,
-      404
+      404,
+      409
     ].freeze
 
-    def self.parse(payload)
+    def self.parse(payload:, status:)
       payload = case payload
                 when String then JSON.parse(payload)
                 when Hash then payload
@@ -20,26 +19,22 @@ module DeliverySolutionsAPI
       # NOTE: Handling case where payload is a String Array that got parsed
       payload = { collection: payload } if payload.is_a?(Array)
 
-      new(payload)
+      new(payload:, status:)
     end
 
-    def initialize(payload = {})
+    attr_reader :payload, :status
+
+    def initialize(status:, payload: {})
       @payload = Payload.new(payload)
+      @status = status
     end
 
     def error?
-      return true if ERROR_CODES.include?(payload.statusCode)
-      return false if payload.errors.nil?
-
-      payload.errors.any?
+      ERROR_CODES.include?(payload.statusCode)
     end
 
     def success?
       !error?
-    end
-
-    def to_s
-      inspect
     end
   end
 end

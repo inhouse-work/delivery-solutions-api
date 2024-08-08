@@ -30,4 +30,10 @@ module DeliverySolutionsAPI
   def build_session(api_key:, tenant_id:)
     Session.new(api_key:, tenant_id:)
   end
+
+  def fixture(path, status: 200)
+    raise NotImplementedError
+
+    Fixtures[path, status]
+  end
 end

@@ -3,6 +3,18 @@
 Session = Data.define(:api_key, :tenant_id)
 
 RSpec.describe DeliverySolutionsAPI::Clients::Production do
+  def http_client(**)
+    class_double(HTTPX, **)
+  end
+
+  def http_response(body: {})
+    instance_double(
+      HTTPX::Response,
+      read: body.to_json,
+      status: 200
+    )
+  end
+
   let(:params) do
     {
       base_url: "https://example.com"
@@ -12,8 +24,8 @@ RSpec.describe DeliverySolutionsAPI::Clients::Production do
 
   describe "#get_rates" do
     it "returns rates" do
-      response = double("response", read: { "rates" => [] }.to_json)
-      http = double("client", post: response)
+      response = http_response
+      http = http_client(post: response)
       client = described_class.new(http:, url: "https://example.com")
       result = client.get_rates(session:)
 
@@ -23,8 +35,8 @@ RSpec.describe DeliverySolutionsAPI::Clients::Production do
 
   describe "#create_order" do
     it "returns rates" do
-      response = double("response", read: {}.to_json)
-      http = double("client", post: response)
+      response = http_response
+      http = http_client(post: response)
       client = described_class.new(http:, url: "https://example.com")
       result = client.create_order(
         session:,
@@ -37,8 +49,8 @@ RSpec.describe DeliverySolutionsAPI::Clients::Production do
 
   describe "#list_locations" do
     it "returns success" do
-      response = double("response", read: [])
-      http = double("client", get: response)
+      response = http_response
+      http = http_client(get: response)
       client = described_class.new(http:, url: "https://example.com")
       result = client.list_locations(session:)
 
@@ -46,9 +58,12 @@ RSpec.describe DeliverySolutionsAPI::Clients::Production do
     end
 
     it "handles the array we get back from DS" do
-      read = File.read("fixtures/pickup_location/list_locations/200-result.json")
-      response = double("response", read:)
-      http = double("client", get: response)
+      body = DeliverySolutionsAPI.fixture(
+        "pickup_location/list_locations",
+        status: 200
+      )
+      response = http_response(body:)
+      http = http_client(get: response)
       client = described_class.new(http:, url: "https://example.com")
       result = client.list_locations(session:)
 

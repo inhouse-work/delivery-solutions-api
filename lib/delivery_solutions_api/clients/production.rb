@@ -57,7 +57,7 @@ module DeliverySolutionsAPI
         url_for(path).then do |url|
           url.query = ::URI.encode_www_form(params)
           response = @http.get(url, headers: headers(session))
-          Response.parse(response.read)
+          build_response(response)
         end
       end
 
@@ -72,12 +72,12 @@ module DeliverySolutionsAPI
           headers: headers(session)
         )
 
-        Response.parse(response.read)
+        build_response(response)
       end
 
       def delete(session:, path:)
         response = @http.delete(url_for(path), headers: headers(session))
-        Response.parse(response.read)
+        build_response(response)
       end
 
       def headers(session)
@@ -88,6 +88,10 @@ module DeliverySolutionsAPI
           "x-api-key" => session.api_key,
           "tenantId" => session.tenant_id
         }
+      end
+
+      def build_response(response)
+        Response.parse(payload: response.read, status: response.status)
       end
     end
   end
