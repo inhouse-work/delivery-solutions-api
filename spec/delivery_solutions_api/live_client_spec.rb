@@ -2,7 +2,7 @@
 
 Session = Data.define(:api_key, :tenant_id)
 
-RSpec.describe DeliverySolutionsAPI::Clients::Production do
+RSpec.describe DeliverySolutionsAPI::LiveClient do
   def http_client(**)
     class_double(HTTPX, **)
   end
@@ -60,7 +60,7 @@ RSpec.describe DeliverySolutionsAPI::Clients::Production do
     it "handles the array we get back from DS" do
       body = DeliverySolutionsAPI.fixture(
         "pickup_location/list_locations",
-        status: 200
+        status_code: 200
       )
       response = http_response(body:)
       http = http_client(get: response)

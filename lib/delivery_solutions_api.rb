@@ -23,15 +23,29 @@ module DeliverySolutionsAPI
   GEM_ROOT = Pathname.new(__dir__).join("../").freeze
   public_constant :GEM_ROOT
 
-  def new(...)
-    Client.build(...)
-  end
-
   def build_session(api_key:, tenant_id:)
     Session.new(api_key:, tenant_id:)
   end
 
-  def fixture(path, status: 200)
-    Fixtures[path, status]
+  def test_client
+    Client.new
+  end
+
+  def sandbox_client
+    LiveClient.build(sandbox: true)
+  end
+
+  def production_client
+    LiveClient.build(sandbox: false)
+  end
+
+  def stubbed_response(path, status_code: 200)
+    fixture = fixture(path, status_code:)
+
+    Response.parse(payload: fixture, status: status_code)
+  end
+
+  def fixture(path, status_code: 200)
+    Fixtures[path, status_code]
   end
 end

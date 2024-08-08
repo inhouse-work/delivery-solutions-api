@@ -2,16 +2,8 @@
 
 module DeliverySolutionsAPI
   class Client
-    def self.build(
-      test: false,
-      raise_api_errors: true,
-      **
-    )
-      if test
-        Clients::Test.build(raise_api_errors:)
-      else
-        Clients::Production.build(**)
-      end
+    def initialize(raise_api_errors: false)
+      @raise_api_errors = raise_api_errors
     end
 
     def get_rates(params)
