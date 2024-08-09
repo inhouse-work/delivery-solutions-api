@@ -18,8 +18,6 @@ loader.setup
 module DeliverySolutionsAPI
   module_function
 
-  Session = Data.define(:api_key, :tenant_id)
-
   GEM_ROOT = Pathname.new(__dir__).join("../").freeze
   public_constant :GEM_ROOT
 
@@ -27,21 +25,20 @@ module DeliverySolutionsAPI
     Session.new(api_key:, tenant_id:)
   end
 
-  def test_client
-    Client.new
-  end
-
   def sandbox_client
-    LiveClient.build(sandbox: true)
+    Client.build(sandbox: true)
   end
 
   def production_client
-    LiveClient.build(sandbox: false)
+    Client.build(sandbox: false)
   end
 
-  def stubbed_response(path, status_code: 200)
-    fixture = fixture(path, status_code:)
+  def stubbed_response(path = nil, status_code: 200, fixture: nil)
+    if fixture.nil? && path.nil?
+      raise ArgumentError, "You must provide a fixture when using this method"
+    end
 
+    fixture ||= fixture(path, status_code:)
     Response.parse(payload: fixture, status: status_code)
   end
 

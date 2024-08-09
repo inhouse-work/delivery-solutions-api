@@ -19,20 +19,11 @@ RSpec.describe DeliverySolutionsAPI do
     end
   end
 
-  describe "#test_client" do
-    it "returns the base client" do
-      client = described_class.test_client
-      expect(client).to be_a DeliverySolutionsAPI::Client
-      expect { client.get_rates({}) }
-        .to raise_error NotImplementedError
-    end
-  end
-
   describe "#sandbox_client" do
     it "returns a sandbox client" do
       client = described_class.sandbox_client
 
-      expect(client).to be_a DeliverySolutionsAPI::LiveClient
+      expect(client).to be_a DeliverySolutionsAPI::Client
       expect(client.production?).to be false
     end
   end
@@ -41,7 +32,7 @@ RSpec.describe DeliverySolutionsAPI do
     it "retuns a production client" do
       client = described_class.production_client
 
-      expect(client).to be_a DeliverySolutionsAPI::LiveClient
+      expect(client).to be_a DeliverySolutionsAPI::Client
       expect(client.production?).to be true
     end
   end

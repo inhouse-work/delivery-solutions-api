@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-Session = Data.define(:api_key, :tenant_id)
-
-RSpec.describe DeliverySolutionsAPI::LiveClient do
+RSpec.describe DeliverySolutionsAPI::Client do
   def http_client(**)
     class_double(HTTPX, **)
   end
@@ -15,18 +13,15 @@ RSpec.describe DeliverySolutionsAPI::LiveClient do
     )
   end
 
-  let(:params) do
-    {
-      base_url: "https://example.com"
-    }
+  let(:session) do
+    DeliverySolutionsAPI.build_session(api_key: "123", tenant_id: "456")
   end
-  let(:session) { Session.new(api_key: "123", tenant_id: "456") }
 
   describe "#get_rates" do
     it "returns rates" do
       response = http_response
       http = http_client(post: response)
-      client = described_class.new(http:, url: "https://example.com")
+      client = build_client(http)
       result = client.get_rates(session:)
 
       expect(result).to be_success
@@ -37,7 +32,7 @@ RSpec.describe DeliverySolutionsAPI::LiveClient do
     it "returns rates" do
       response = http_response
       http = http_client(post: response)
-      client = described_class.new(http:, url: "https://example.com")
+      client = build_client(http)
       result = client.create_order(
         session:,
         something: "something"
@@ -51,7 +46,7 @@ RSpec.describe DeliverySolutionsAPI::LiveClient do
     it "returns success" do
       response = http_response
       http = http_client(get: response)
-      client = described_class.new(http:, url: "https://example.com")
+      client = build_client(http)
       result = client.list_locations(session:)
 
       expect(result).to be_success
@@ -64,7 +59,7 @@ RSpec.describe DeliverySolutionsAPI::LiveClient do
       )
       response = http_response(body:)
       http = http_client(get: response)
-      client = described_class.new(http:, url: "https://example.com")
+      client = build_client(http)
       result = client.list_locations(session:)
 
       expect(result).to be_success
@@ -75,13 +70,14 @@ RSpec.describe DeliverySolutionsAPI::LiveClient do
     it "returns success" do
       response = http_response(body: {})
       http = http_client(post: response)
-      client = described_class.new(http:, url: "https://example.com")
-      result = client.create_location(
-        session:,
-        params: {}
-      )
+      client = build_client(http)
+      result = client.create_location(session:, params: {})
 
       expect(result).to be_success
     end
+  end
+
+  def build_client(http)
+    described_class.new(http:, url: "https://example.com", environment: :sandbox)
   end
 end
