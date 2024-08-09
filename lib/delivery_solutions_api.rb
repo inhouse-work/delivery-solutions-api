@@ -25,6 +25,10 @@ module DeliverySolutionsAPI
     Session.new(api_key:, tenant_id:)
   end
 
+  def test_client
+    Client.build(sandbox: true, test: true)
+  end
+
   def sandbox_client
     Client.build(sandbox: true)
   end
