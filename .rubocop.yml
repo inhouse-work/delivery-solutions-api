@@ -4,4 +4,3 @@ require:
 inherit_gem:
   rubocop-inhouse:
     - config/default.yml
-    - config/rails.yml

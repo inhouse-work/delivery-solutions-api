@@ -13,7 +13,8 @@ RSpec.describe DeliverySolutionsAPI::Fixtures do
     it "raises an argument error if the fixture does not exist" do
       path = "non-existent"
 
-      expect { described_class[path, 200] }.to raise_error(ArgumentError)
+      expect { described_class[path, 200] }
+        .to raise_error(ArgumentError)
     end
   end
 end
