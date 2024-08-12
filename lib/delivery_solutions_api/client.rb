@@ -8,6 +8,8 @@ module DeliverySolutionsAPI
     PRODUCTION_URL = "https://production.api.deliverysolutions.co/"
     SANDBOX_URL = "https://sandbox.api.deliverysolutions.co/"
 
+    MissingClientStub = Class.new(StandardError)
+
     def production?
       @environment == :production
     end
@@ -26,11 +28,7 @@ module DeliverySolutionsAPI
       environment = (sandbox ? :sandbox : :production) unless test
       http = HTTPX
 
-      new(
-        http:,
-        url: URI(url),
-        environment:
-      )
+      new(url: URI(url), environment:, http:)
     end
 
     def initialize(http:, url:, environment:)
@@ -40,28 +38,26 @@ module DeliverySolutionsAPI
     end
 
     def get_rates(session:, **params)
-      path = "/api/v2/rates"
-      post(session:, path:, params:)
+      post(path: "/api/v2/rates", session:, params:)
     end
 
     def list_locations(session:)
-      path = "/api/v2/store"
-      get(session:, path:)
+      get(path: "/api/v2/store", session:)
     end
 
     def create_order(session:, **params)
-      path = "/api/v2/order/placeorderasync"
-      post(session:, path:, params:)
+      post(path: "/api/v2/order/placeorderasync", session:, params:)
     end
 
     def cancel_order(session:, order_external_id:)
-      path = "/api/v2/order/orderExternalId/#{order_external_id}"
-      delete(session:, path:)
+      delete(
+        path: "/api/v2/order/orderExternalId/#{order_external_id}",
+        session:
+      )
     end
 
     def create_location(session:, params:)
-      path = "/api/v2/store"
-      post(session:, path:, params:)
+      post(path: "/api/v2/store", session:, params:)
     end
 
     private
@@ -81,7 +77,7 @@ module DeliverySolutionsAPI
     end
 
     def post(session:, path:, params:)
-      raise_stubbing_error if test?
+      raise_stubbing_error(path) if test?
 
       response = @http.post(
         url_for(path),
@@ -99,8 +95,34 @@ module DeliverySolutionsAPI
       build_response(response)
     end
 
-    def raise_stubbing_error
-      raise ArgumentError, "This method is not available in test mode"
+    def raise_stubbing_error(path)
+      raise(
+        MissingClientStub,
+        <<~MSG
+          You tried to fetch #{path} using the DeliverySolutionsAPI testing client.
+          You should create an instance double and stub the message using DeliverySolutionsAPI.stubbed_response instead:
+
+          client = instance_double(
+            DeliverySolutionsAPI::Client,
+            get_rates: DeliverySolutionsAPI.stubbed_response(
+              "rates/get_rates",
+              status_code: 200
+            )
+          )
+
+          Or if you need to override the fixture:
+
+          client = instance_double(
+            DeliverySolutionsAPI::Client,
+            get_rates: DeliverySolutionsAPI.stubbed_response(
+              fixture: DeliverySolutionsAPI.fixture(
+                "rates/get_rates",
+                status_code: 200
+              )
+            )
+          )
+        MSG
+      )
     end
 
     def headers(session)

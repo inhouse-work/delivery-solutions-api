@@ -19,7 +19,6 @@ module DeliverySolutionsAPI
   module_function
 
   GEM_ROOT = Pathname.new(__dir__).join("../").freeze
-  public_constant :GEM_ROOT
 
   def build_session(api_key:, tenant_id:)
     Session.new(api_key:, tenant_id:)

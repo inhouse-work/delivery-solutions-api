@@ -11,7 +11,7 @@ module DeliverySolutionsAPI
 
     def self.parse(payload:, status:)
       payload = case payload
-                when String then JSON.parse(payload)
+                when String then JSON.parse(payload, symbolize_names: true)
                 when Hash then payload
                 when Array then { collection: payload }
       end
