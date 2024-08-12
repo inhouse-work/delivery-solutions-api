@@ -7,6 +7,7 @@ RSpec::Core::RakeTask.new(:spec)
 
 task default: :spec
 
+desc "Sets up the environment for the tasks"
 task :environment do
   require "delivery_solutions_api"
 end
@@ -32,6 +33,7 @@ task get_rates: :environment do
     ]
   }
 
-  result = client.get_rates(session:, **params)
-  debugger
+  client.get_rates(session:, **params).tap do |_result|
+    # debugger
+  end
 end

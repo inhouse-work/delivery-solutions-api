@@ -4,13 +4,20 @@ module DeliverySolutionsAPI
   module Errors
     module_function
 
-    def localized(type)
+    def from_status(type)
       inflector = Dry::Inflector.new
       inflector.constantize(
         inflector.camelize("delivery_solutions_api/errors/#{type.downcase}")
       )
     rescue NameError => e
       Error.new(e.message)
+    end
+
+    def from_response(response)
+      type = response.payload.type
+      error = from_status(type)
+
+      error.new(response.payload.message)
     end
 
     Error = Class.new(StandardError)
