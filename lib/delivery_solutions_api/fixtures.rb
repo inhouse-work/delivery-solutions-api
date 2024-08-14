@@ -5,7 +5,7 @@ module DeliverySolutionsAPI
     module_function
 
     def [](path, status)
-      path = Pathname.new("fixtures").join(path)
+      path = Pathname.new(GEM_ROOT).join("fixtures").join(path)
       raise ArgumentError, "Fixture does not exist" unless path.directory?
 
       match = path
