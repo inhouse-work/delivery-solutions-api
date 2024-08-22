@@ -68,7 +68,7 @@ module DeliverySolutionsAPI
       url_for(path).then do |url|
         url.query = ::URI.encode_www_form(params)
         response = @http.get(url, headers: headers(session))
-        build_response(response)
+        build_response(response, params)
       end
     end
 
@@ -85,7 +85,7 @@ module DeliverySolutionsAPI
         headers: headers(session)
       )
 
-      build_response(response)
+      build_response(response, params)
     end
 
     def delete(session:, path:)
@@ -135,8 +135,8 @@ module DeliverySolutionsAPI
       }
     end
 
-    def build_response(response)
-      Response.parse(payload: response.read, status: response.status)
+    def build_response(response, params = nil)
+      Response.parse(payload: response.read, status: response.status, params:)
     end
   end
 end
