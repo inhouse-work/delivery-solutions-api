@@ -1,0 +1,10 @@
+{
+  "errors": [
+    {
+      "type": "INVALID_DATA",
+      "message": "Store with external id 1529500 doesn't exist."
+    }
+  ],
+  "type": "INVALID_DATA",
+  "message": "Store with external id 1529500 doesn't exist."
+}

@@ -1,0 +1,44 @@
+{
+  "tenantId": "dummyaccount1",
+  "active": true,
+  "name": "Great Pickup Location",
+  "storeExternalId": "152950",
+  "brandExternalId": "devon",
+  "contact": {
+    "name": "Location Manager",
+    "phone": "+1-214-234-2232"
+  },
+  "address": {
+    "street": "5510 S I-35 Frontage Rd",
+    "city": "Austin",
+    "state": "TX",
+    "zipcode": "78745",
+    "country": "US",
+    "latitude": 30.2008384,
+    "longitude": -97.76576519999999
+  },
+  "currencyCode": "USD",
+  "description": "Nice location in Austin, Texas",
+  "pickupInstructions": "Park in the designated parking area, and come to the designated pick up desk",
+  "returnStoreId": "152946",
+  "DSPs": [
+    {
+      "name": "DoorDash",
+      "corporateDspId": "62667b2cdf13f556ef23e6cd"
+    },
+    {
+      "name": "FedEx",
+      "corporateDspId": "624c3b88ceebc92a0f5d4f7b"
+    }
+  ],
+  "dspAttributes": {
+    "FedEx": {
+      "accountNumber": "test-account-number",
+      "returnStoreService": "FEDEX_GROUND"
+    }
+  },
+  "timeZone": "America/Chicago",
+  "lastUpdatedAt": "2022-04-26T04:38:55.794Z",
+  "isDeleted": false,
+  "isTemporary": false
+}

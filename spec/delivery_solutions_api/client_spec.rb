@@ -77,6 +77,21 @@ RSpec.describe DeliverySolutionsAPI::Client do
     end
   end
 
+  describe "#edit_location" do
+    it "returns success" do
+      response = http_response(body: {})
+      http = http_client(patch: response)
+      client = build_client(http)
+      result = client.edit_location(
+        session:,
+        store_external_id: "123",
+        params: {}
+      )
+
+      expect(result).to be_success
+    end
+  end
+
   def build_client(http)
     described_class.new(http:, url: "https://example.com", environment: :sandbox)
   end

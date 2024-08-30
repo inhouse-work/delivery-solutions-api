@@ -60,6 +60,14 @@ module DeliverySolutionsAPI
       post(path: "/api/v2/store", session:, params:)
     end
 
+    def edit_location(session:, params:, store_external_id:)
+      patch(
+        path: "/api/v2/store/storeExternalId/#{store_external_id}",
+        session:,
+        params:
+      )
+    end
+
     private
 
     def get(session:, path:, params: {})
@@ -80,6 +88,18 @@ module DeliverySolutionsAPI
       raise_stubbing_error(path) if test?
 
       response = @http.post(
+        url_for(path),
+        json: params,
+        headers: headers(session)
+      )
+
+      build_response(response, params)
+    end
+
+    def patch(session:, path:, params:)
+      raise_stubbing_error(path) if test?
+
+      response = @http.patch(
         url_for(path),
         json: params,
         headers: headers(session)
