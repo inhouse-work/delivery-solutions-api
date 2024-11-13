@@ -71,7 +71,7 @@ module DeliverySolutionsAPI
     private
 
     def get(session:, path:, params: {})
-      raise_stubbing_error if test?
+      raise_stubbing_error(path) if test?
 
       url_for(path).then do |url|
         url.query = ::URI.encode_www_form(params)
@@ -109,7 +109,7 @@ module DeliverySolutionsAPI
     end
 
     def delete(session:, path:)
-      raise_stubbing_error if test?
+      raise_stubbing_error(path) if test?
 
       response = @http.delete(url_for(path), headers: headers(session))
       build_response(response)
